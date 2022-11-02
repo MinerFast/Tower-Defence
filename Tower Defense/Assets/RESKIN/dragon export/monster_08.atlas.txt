@@ -1,0 +1,377 @@
+
+monster_08.png
+size: 556,524
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1ARM 1A
+  rotate: true
+  xy: 362, 239
+  size: 30, 35
+  orig: 30, 35
+  offset: 0, 0
+  index: -1
+1ARM 1B
+  rotate: true
+  xy: 351, 486
+  size: 36, 26
+  orig: 37, 27
+  offset: 1, 1
+  index: -1
+1ARM 2A
+  rotate: true
+  xy: 379, 499
+  size: 23, 34
+  orig: 23, 35
+  offset: 0, 0
+  index: -1
+1ARM 2B
+  rotate: false
+  xy: 476, 312
+  size: 29, 25
+  orig: 29, 27
+  offset: 0, 2
+  index: -1
+1BODY
+  rotate: true
+  xy: 289, 5
+  size: 111, 107
+  orig: 111, 107
+  offset: 0, 0
+  index: -1
+1EYE CLOSED
+  rotate: false
+  xy: 507, 289
+  size: 42, 48
+  orig: 43, 48
+  offset: 0, 0
+  index: -1
+1HEAD
+  rotate: true
+  xy: 167, 2
+  size: 104, 120
+  orig: 104, 121
+  offset: 0, 0
+  index: -1
+1JAW
+  rotate: true
+  xy: 503, 229
+  size: 58, 48
+  orig: 58, 49
+  offset: 0, 1
+  index: -1
+1LEG 1A
+  rotate: false
+  xy: 2, 6
+  size: 53, 77
+  orig: 53, 77
+  offset: 0, 0
+  index: -1
+1LEG 1B
+  rotate: true
+  xy: 476, 274
+  size: 36, 25
+  orig: 38, 25
+  offset: 0, 0
+  index: -1
+1LEG 1C
+  rotate: false
+  xy: 306, 395
+  size: 38, 50
+  orig: 38, 50
+  offset: 0, 0
+  index: -1
+1LEG 2A
+  rotate: false
+  xy: 306, 448
+  size: 43, 74
+  orig: 43, 74
+  offset: 0, 0
+  index: -1
+1LEG 2B
+  rotate: true
+  xy: 427, 239
+  size: 30, 24
+  orig: 32, 24
+  offset: 0, 0
+  index: -1
+1LEG 2C
+  rotate: true
+  xy: 261, 238
+  size: 31, 48
+  orig: 31, 48
+  offset: 0, 0
+  index: -1
+1TAIL
+  rotate: true
+  xy: 270, 118
+  size: 118, 89
+  orig: 118, 89
+  offset: 0, 0
+  index: -1
+1WING 1
+  rotate: true
+  xy: 2, 230
+  size: 143, 125
+  orig: 143, 125
+  offset: 0, 0
+  index: -1
+1WING 2
+  rotate: false
+  xy: 236, 393
+  size: 68, 129
+  orig: 68, 129
+  offset: 0, 0
+  index: -1
+2ARM 1A
+  rotate: false
+  xy: 351, 447
+  size: 30, 35
+  orig: 30, 35
+  offset: 0, 0
+  index: -1
+2ARM 1B
+  rotate: false
+  xy: 415, 497
+  size: 35, 25
+  orig: 37, 27
+  offset: 1, 2
+  index: -1
+2ARM 2A
+  rotate: true
+  xy: 507, 4
+  size: 24, 36
+  orig: 24, 36
+  offset: 0, 0
+  index: -1
+2ARM 2B
+  rotate: false
+  xy: 503, 384
+  size: 29, 26
+  orig: 30, 28
+  offset: 1, 2
+  index: -1
+2BODY
+  rotate: true
+  xy: 398, 5
+  size: 111, 107
+  orig: 111, 107
+  offset: 0, 0
+  index: -1
+2EYE CLOSED
+  rotate: true
+  xy: 452, 167
+  size: 42, 48
+  orig: 43, 48
+  offset: 0, 0
+  index: -1
+2HEAD
+  rotate: false
+  xy: 261, 271
+  size: 104, 120
+  orig: 104, 121
+  offset: 0, 0
+  index: -1
+2JAW
+  rotate: true
+  xy: 453, 211
+  size: 58, 48
+  orig: 58, 49
+  offset: 0, 1
+  index: -1
+2LEG 1A
+  rotate: false
+  xy: 57, 6
+  size: 53, 77
+  orig: 53, 77
+  offset: 0, 0
+  index: -1
+2LEG 1B
+  rotate: false
+  xy: 507, 57
+  size: 36, 25
+  orig: 38, 25
+  offset: 0, 0
+  index: -1
+2LEG 1C
+  rotate: false
+  xy: 346, 395
+  size: 38, 50
+  orig: 38, 50
+  offset: 0, 0
+  index: -1
+2LEG 2A
+  rotate: false
+  xy: 507, 447
+  size: 44, 75
+  orig: 45, 75
+  offset: 0, 0
+  index: -1
+2LEG 2B
+  rotate: true
+  xy: 311, 238
+  size: 31, 24
+  orig: 33, 24
+  offset: 0, 0
+  index: -1
+2LEG 2C
+  rotate: true
+  xy: 503, 412
+  size: 33, 49
+  orig: 33, 49
+  offset: 0, 0
+  index: -1
+2TAIL
+  rotate: true
+  xy: 361, 118
+  size: 118, 89
+  orig: 118, 89
+  offset: 0, 0
+  index: -1
+2WING 1
+  rotate: true
+  xy: 109, 379
+  size: 143, 125
+  orig: 143, 125
+  offset: 0, 0
+  index: -1
+2WING 2
+  rotate: false
+  xy: 129, 108
+  size: 69, 128
+  orig: 69, 128
+  offset: 0, 0
+  index: -1
+3ARM 1A
+  rotate: false
+  xy: 383, 447
+  size: 30, 35
+  orig: 30, 35
+  offset: 0, 0
+  index: -1
+3ARM 1B
+  rotate: true
+  xy: 386, 409
+  size: 36, 26
+  orig: 37, 27
+  offset: 1, 1
+  index: -1
+3ARM 2A
+  rotate: true
+  xy: 415, 471
+  size: 24, 35
+  orig: 24, 35
+  offset: 0, 0
+  index: -1
+3ARM 2B
+  rotate: true
+  xy: 399, 239
+  size: 30, 26
+  orig: 30, 28
+  offset: 0, 2
+  index: -1
+3BODY
+  rotate: true
+  xy: 367, 271
+  size: 111, 107
+  orig: 111, 107
+  offset: 0, 0
+  index: -1
+3EYE CLOSED
+  rotate: false
+  xy: 502, 119
+  size: 42, 48
+  orig: 43, 48
+  offset: 0, 0
+  index: -1
+3HEAD
+  rotate: false
+  xy: 129, 238
+  size: 130, 139
+  orig: 130, 139
+  offset: 0, 0
+  index: -1
+3JAW
+  rotate: true
+  xy: 503, 169
+  size: 58, 48
+  orig: 58, 49
+  offset: 0, 1
+  index: -1
+3LEG 1A
+  rotate: false
+  xy: 112, 6
+  size: 53, 77
+  orig: 53, 77
+  offset: 0, 0
+  index: -1
+3LEG 1B
+  rotate: false
+  xy: 507, 30
+  size: 36, 25
+  orig: 38, 25
+  offset: 0, 0
+  index: -1
+3LEG 1C
+  rotate: true
+  xy: 452, 484
+  size: 38, 50
+  orig: 38, 50
+  offset: 0, 0
+  index: -1
+3LEG 2A
+  rotate: true
+  xy: 476, 339
+  size: 43, 76
+  orig: 44, 76
+  offset: 1, 0
+  index: -1
+3LEG 2B
+  rotate: true
+  xy: 337, 238
+  size: 31, 23
+  orig: 33, 24
+  offset: 0, 1
+  index: -1
+3LEG 2C
+  rotate: true
+  xy: 452, 133
+  size: 32, 48
+  orig: 33, 48
+  offset: 0, 0
+  index: -1
+3TAIL
+  rotate: true
+  xy: 2, 375
+  size: 147, 105
+  orig: 147, 105
+  offset: 0, 0
+  index: -1
+3WING 1
+  rotate: true
+  xy: 2, 85
+  size: 143, 125
+  orig: 143, 125
+  offset: 0, 0
+  index: -1
+3WING 2
+  rotate: false
+  xy: 200, 108
+  size: 68, 128
+  orig: 70, 128
+  offset: 1, 0
+  index: -1
+Ice
+  rotate: true
+  xy: 415, 384
+  size: 85, 86
+  orig: 85, 86
+  offset: 0, 0
+  index: -1
+Poisoned
+  rotate: false
+  xy: 507, 84
+  size: 39, 33
+  orig: 39, 33
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,83 @@
+
+char5.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 2, 43
+  size: 113, 162
+  orig: 113, 162
+  offset: 0, 0
+  index: -1
+Hand-B
+  rotate: false
+  xy: 2, 158
+  size: 184, 185
+  orig: 184, 185
+  offset: 0, 0
+  index: -1
+Hand-F
+  rotate: false
+  xy: 188, 220
+  size: 74, 123
+  orig: 74, 123
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 264, 237
+  size: 121, 102
+  orig: 121, 102
+  offset: 0, 0
+  index: -1
+Head-2
+  rotate: false
+  xy: 387, 237
+  size: 107, 102
+  orig: 107, 102
+  offset: 0, 0
+  index: -1
+Ice
+  rotate: true
+  xy: 272, 341
+  size: 169, 172
+  orig: 169, 172
+  offset: 0, 0
+  index: -1
+Leg-B
+  rotate: false
+  xy: 89, 2
+  size: 29, 39
+  orig: 29, 39
+  offset: 0, 0
+  index: -1
+Leg-F
+  rotate: false
+  xy: 446, 468
+  size: 29, 42
+  orig: 29, 42
+  offset: 0, 0
+  index: -1
+Poisoned
+  rotate: false
+  xy: 188, 152
+  size: 78, 66
+  orig: 78, 66
+  offset: 0, 0
+  index: -1
+Splash
+  rotate: false
+  xy: 2, 345
+  size: 268, 165
+  orig: 268, 165
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 2, 24
+  size: 85, 17
+  orig: 85, 17
+  offset: 0, 0
+  index: -1

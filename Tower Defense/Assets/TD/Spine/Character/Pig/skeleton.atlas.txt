@@ -1,0 +1,160 @@
+
+skeleton.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 272, 386
+  size: 119, 169
+  orig: 119, 169
+  offset: 0, 0
+  index: -1
+Ear-B
+  rotate: false
+  xy: 409, 371
+  size: 29, 13
+  orig: 29, 13
+  offset: 0, 0
+  index: -1
+Ear-F
+  rotate: false
+  xy: 89, 25
+  size: 34, 15
+  orig: 34, 15
+  offset: 0, 0
+  index: -1
+Eb-1
+  rotate: false
+  xy: 270, 156
+  size: 11, 8
+  orig: 11, 8
+  offset: 0, 0
+  index: -1
+Eb-2
+  rotate: true
+  xy: 504, 417
+  size: 8, 6
+  orig: 8, 6
+  offset: 0, 0
+  index: -1
+Eye-1
+  rotate: false
+  xy: 486, 409
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Eye-2
+  rotate: false
+  xy: 251, 100
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+Hand-B
+  rotate: true
+  xy: 173, 166
+  size: 71, 110
+  orig: 71, 110
+  offset: 0, 0
+  index: -1
+Hand-F
+  rotate: true
+  xy: 2, 42
+  size: 62, 122
+  orig: 62, 122
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 150, 84
+  size: 80, 99
+  orig: 80, 99
+  offset: 0, 0
+  index: -1
+Head-2
+  rotate: false
+  xy: 173, 239
+  size: 93, 99
+  orig: 93, 99
+  offset: 0, 0
+  index: -1
+Helmet
+  rotate: false
+  xy: 2, 2
+  size: 35, 19
+  orig: 35, 19
+  offset: 0, 0
+  index: -1
+Horn
+  rotate: false
+  xy: 272, 336
+  size: 88, 48
+  orig: 88, 48
+  offset: 0, 0
+  index: -1
+Ice
+  rotate: false
+  xy: 2, 166
+  size: 169, 172
+  orig: 169, 172
+  offset: 0, 0
+  index: -1
+Leg-B
+  rotate: false
+  xy: 126, 59
+  size: 16, 45
+  orig: 16, 45
+  offset: 0, 0
+  index: -1
+Leg-F
+  rotate: false
+  xy: 251, 118
+  size: 17, 46
+  orig: 17, 46
+  offset: 0, 0
+  index: -1
+Poisoned
+  rotate: true
+  xy: 443, 427
+  size: 78, 66
+  orig: 78, 66
+  offset: 0, 0
+  index: -1
+Shadow
+  rotate: false
+  xy: 2, 23
+  size: 85, 17
+  orig: 85, 17
+  offset: 0, 0
+  index: -1
+Smoke1
+  rotate: false
+  xy: 2, 106
+  size: 146, 58
+  orig: 146, 58
+  offset: 0, 0
+  index: -1
+Smoke2
+  rotate: false
+  xy: 362, 339
+  size: 45, 45
+  orig: 45, 45
+  offset: 0, 0
+  index: -1
+Splash
+  rotate: false
+  xy: 2, 340
+  size: 268, 165
+  orig: 268, 165
+  offset: 0, 0
+  index: -1
+Tail
+  rotate: false
+  xy: 443, 388
+  size: 41, 37
+  orig: 41, 37
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,62 @@
+
+skeleton.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 173, 142
+  size: 103, 112
+  orig: 103, 112
+  offset: 0, 0
+  index: -1
+Eye-1
+  rotate: false
+  xy: 278, 167
+  size: 64, 87
+  orig: 64, 87
+  offset: 0, 0
+  index: -1
+Eye-2
+  rotate: false
+  xy: 70, 18
+  size: 75, 62
+  orig: 75, 62
+  offset: 0, 0
+  index: -1
+Ice
+  rotate: false
+  xy: 2, 82
+  size: 169, 172
+  orig: 169, 172
+  offset: 0, 0
+  index: -1
+Poisoned
+  rotate: true
+  xy: 2, 2
+  size: 78, 66
+  orig: 78, 66
+  offset: 0, 0
+  index: -1
+Wing-B
+  rotate: false
+  xy: 173, 96
+  size: 49, 25
+  orig: 49, 25
+  offset: 0, 0
+  index: -1
+Wing-F
+  rotate: false
+  xy: 344, 225
+  size: 57, 29
+  orig: 57, 29
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 173, 123
+  size: 85, 17
+  orig: 85, 17
+  offset: 0, 0
+  index: -1

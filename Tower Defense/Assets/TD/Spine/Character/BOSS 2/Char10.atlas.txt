@@ -1,0 +1,97 @@
+
+Char10.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 272, 394
+  size: 105, 206
+  orig: 105, 206
+  offset: 0, 0
+  index: -1
+Ear-B
+  rotate: true
+  xy: 480, 391
+  size: 21, 10
+  orig: 21, 10
+  offset: 0, 0
+  index: -1
+Ear-F
+  rotate: true
+  xy: 468, 367
+  size: 25, 10
+  orig: 25, 10
+  offset: 0, 0
+  index: -1
+Hand-B
+  rotate: false
+  xy: 2, 35
+  size: 162, 123
+  orig: 162, 123
+  offset: 0, 0
+  index: -1
+Hand-F
+  rotate: false
+  xy: 173, 146
+  size: 92, 186
+  orig: 92, 186
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 166, 30
+  size: 114, 108
+  orig: 114, 108
+  offset: 0, 0
+  index: -1
+Head-2
+  rotate: false
+  xy: 272, 284
+  size: 114, 108
+  orig: 114, 108
+  offset: 0, 0
+  index: -1
+Ice
+  rotate: false
+  xy: 2, 160
+  size: 169, 172
+  orig: 169, 172
+  offset: 0, 0
+  index: -1
+Leg-B
+  rotate: true
+  xy: 2, 2
+  size: 31, 64
+  orig: 31, 64
+  offset: 0, 0
+  index: -1
+Leg-F
+  rotate: true
+  xy: 388, 298
+  size: 26, 64
+  orig: 26, 64
+  offset: 0, 0
+  index: -1
+Poisoned
+  rotate: false
+  xy: 388, 326
+  size: 78, 66
+  orig: 78, 66
+  offset: 0, 0
+  index: -1
+Splash2
+  rotate: false
+  xy: 2, 334
+  size: 268, 165
+  orig: 268, 165
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: true
+  xy: 480, 414
+  size: 85, 17
+  orig: 85, 17
+  offset: 0, 0
+  index: -1

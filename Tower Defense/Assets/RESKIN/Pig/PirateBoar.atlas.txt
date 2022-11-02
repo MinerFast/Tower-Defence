@@ -1,0 +1,76 @@
+
+PirateBoar.png
+size: 500,160
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Ice
+  rotate: false
+  xy: 377, 72
+  size: 85, 86
+  orig: 85, 86
+  offset: 0, 0
+  index: -1
+Poisoned
+  rotate: false
+  xy: 296, 3
+  size: 39, 33
+  orig: 39, 33
+  offset: 0, 0
+  index: -1
+base
+  rotate: false
+  xy: 411, 4
+  size: 85, 66
+  orig: 85, 66
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 2, 19
+  size: 201, 139
+  orig: 201, 139
+  offset: 0, 0
+  index: -1
+cannon
+  rotate: true
+  xy: 205, 7
+  size: 151, 89
+  orig: 151, 89
+  offset: 0, 0
+  index: -1
+hat
+  rotate: true
+  xy: 296, 38
+  size: 120, 79
+  orig: 120, 79
+  offset: 0, 0
+  index: -1
+lef F R
+  rotate: true
+  xy: 337, 2
+  size: 34, 35
+  orig: 34, 35
+  offset: 0, 0
+  index: -1
+leg F L
+  rotate: true
+  xy: 337, 2
+  size: 34, 35
+  orig: 34, 35
+  offset: 0, 0
+  index: -1
+leg B L
+  rotate: false
+  xy: 374, 2
+  size: 35, 34
+  orig: 35, 34
+  offset: 0, 0
+  index: -1
+leg B R
+  rotate: false
+  xy: 374, 2
+  size: 35, 34
+  orig: 35, 34
+  offset: 0, 0
+  index: -1

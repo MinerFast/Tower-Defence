@@ -1,0 +1,90 @@
+
+Char19.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: true
+  xy: 385, 162
+  size: 92, 122
+  orig: 92, 122
+  offset: 0, 0
+  index: -1
+Hand-B1
+  rotate: true
+  xy: 173, 92
+  size: 39, 72
+  orig: 39, 72
+  offset: 0, 0
+  index: -1
+Hand-B2
+  rotate: true
+  xy: 186, 7
+  size: 83, 62
+  orig: 83, 62
+  offset: 0, 0
+  index: -1
+Hand-F
+  rotate: true
+  xy: 385, 104
+  size: 56, 107
+  orig: 56, 107
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 173, 133
+  size: 104, 121
+  orig: 104, 121
+  offset: 0, 0
+  index: -1
+Head.2
+  rotate: false
+  xy: 279, 133
+  size: 104, 121
+  orig: 104, 121
+  offset: 0, 0
+  index: -1
+Ice
+  rotate: false
+  xy: 2, 82
+  size: 169, 172
+  orig: 169, 172
+  offset: 0, 0
+  index: -1
+Leg-B
+  rotate: true
+  xy: 334, 97
+  size: 34, 47
+  orig: 34, 47
+  offset: 0, 0
+  index: -1
+Leg-F
+  rotate: false
+  xy: 250, 65
+  size: 34, 47
+  orig: 34, 47
+  offset: 0, 0
+  index: -1
+Poisoned
+  rotate: true
+  xy: 2, 2
+  size: 78, 66
+  orig: 78, 66
+  offset: 0, 0
+  index: -1
+Shield
+  rotate: true
+  xy: 70, 3
+  size: 77, 114
+  orig: 77, 114
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: false
+  xy: 247, 114
+  size: 85, 17
+  orig: 85, 17
+  offset: 0, 0
+  index: -1

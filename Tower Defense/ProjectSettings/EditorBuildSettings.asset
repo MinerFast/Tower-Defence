@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/TD/Scene/Logo.unity
+    guid: d085bd352a9e6fc43a4ec1979eae5fd2
+  - enabled: 1
+    path: Assets/TD/Scene/Menu.unity
+    guid: 7eea44fbd5748f9448f126da3e1b30e2
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv1.unity
+    guid: 1f9340fbf2dec1f43889f8daca63824e
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv2.unity
+    guid: 9e6247de5634e0d42a4551a3c7a61cde
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv3.unity
+    guid: 1c7a5f209cd7de54484fefaffe7a5cad
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv4.unity
+    guid: a07713f9368291748aa9c4d2060b893f
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv5.unity
+    guid: 8c50e79f9b5976c4cb27398774224aa7
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv6.unity
+    guid: 47d83391770860741a86bdf388e86e17
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv7.unity
+    guid: 5d607e210e6e245e69e47874396588e3
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv8.unity
+    guid: a80fc22e3aa8a8048962f129b2d46ac0
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv9.unity
+    guid: 805ba59eab728584b9263602a32958b6
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv10.unity
+    guid: e855215f2e394a5488125d42e8dc290f
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv11.unity
+    guid: 9989148d677304807aae6458a04b7d09
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv12.unity
+    guid: e6eb094609ebb46479106b1fda37223d
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv13.unity
+    guid: eac5cefb8fe72dc469bd2952b4ebd934
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv14.unity
+    guid: 4df7469b38164fd409bf314fa1e98695
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv15.unity
+    guid: 18ec4c9bf38e44946aecadadf1c4c067
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv16.unity
+    guid: 06508a1ffced9074a94e64c163ee5a1b
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv17.unity
+    guid: 93a47dd28a1442d47b133381e94050d5
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv18.unity
+    guid: 8e52b878bfbb70d4f8b0d0073b8563bc
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv19.unity
+    guid: 7f6508558daa9934797e3c8b00dbe533
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv20.unity
+    guid: dd01591f95ab8584a95836222977eee7
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv21.unity
+    guid: b1986ec772ded7f4c9bd1e803a76f3d9
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv22.unity
+    guid: 667719b43dae1134f9457ae4f12d8758
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv23.unity
+    guid: 368738e56bdaf4921b26d18e460b2b9f
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv24.unity
+    guid: 1ef0ed18af1e84a18a6b68d0de56a8b2
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv25.unity
+    guid: 3ddebf2a73ae94b1daf9f38a814414ef
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv26.unity
+    guid: 1a0fcfcbc174f4e829d228c26bebc2f1
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv27.unity
+    guid: 1a0c1fcaf04f14e05bcc021cec90f6bf
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv28.unity
+    guid: 4e33596a2eb184a2796cb5da8c79c249
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv29.unity
+    guid: 9baf2144a1a1d464ab20cf32b5f65c38
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv30.unity
+    guid: 08cf09728a0b24ceb81857b39d1d187e
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv31.unity
+    guid: bca59d4d493b94d15b8447e176777663
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv32.unity
+    guid: eb601c6bf044e4f0dbb4a2b0e23eb55e
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv33.unity
+    guid: 1fb9b0c3df556479fac6d89bd1a6cc1e
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv34.unity
+    guid: e6011dcbb44554146990f21f8bc1fc70
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv35.unity
+    guid: cd6e1817a7e4d491e83c6864b6e571f8
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv36.unity
+    guid: 4054e849ac93942598cec9466f8aa99a
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv37.unity
+    guid: 5aa93f940481165438d159be73a46d4e
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv38.unity
+    guid: 6e9af47be30904c12ac29d341282176e
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv39.unity
+    guid: ba1e7d0725fe442bb84ba874bba5da3b
+  - enabled: 1
+    path: Assets/TD/Scene/Levels/Lv40.unity
+    guid: 0de0f90a4cb1c48938895491f1b0ab23
+  m_configObjects: {}

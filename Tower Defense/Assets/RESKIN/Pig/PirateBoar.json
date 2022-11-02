@@ -1,0 +1,595 @@
+{
+"skeleton": {
+	"hash": "VCivqH4R7GZy4dXbRSbeihqK2a0",
+	"spine": "3.8.99",
+	"x": -207.77,
+	"y": -4.4,
+	"width": 402,
+	"height": 462,
+	"images": "./Image/",
+	"audio": "/Volumes/WORKPLACE/UNITY WORKPLACE/2 CUSTOM WORKING/Nga guy/RESOURCE/Pig/Pig"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "Poisoned", "parent": "root", "x": -74.06, "y": 224.07 },
+	{ "name": "body", "parent": "root", "length": 175.54, "rotation": 95.91, "x": 24, "y": 68.7 },
+	{ "name": "leg B L", "parent": "body", "length": 50.26, "rotation": -175.94, "x": -22.6, "y": -68.95 },
+	{ "name": "leg B R", "parent": "body", "length": 47.54, "rotation": 176.51, "x": -20.95, "y": -13.97 },
+	{ "name": "lef F R", "parent": "body", "length": 51.52, "rotation": 174.84, "x": -5.62, "y": 49.68 },
+	{ "name": "leg F L", "parent": "body", "length": 48.83, "rotation": 164.63, "x": -6.63, "y": 104.93 },
+	{ "name": "base", "parent": "body", "length": 91.85, "rotation": -2.15, "x": 159.36, "y": -78.36 },
+	{ "name": "cannon", "parent": "base", "length": 190.35, "rotation": 71.37, "x": 106.49, "y": -1.63 },
+	{ "name": "hat", "parent": "body", "length": 84.9, "rotation": 14.71, "x": 172.31, "y": 66.63 }
+],
+"slots": [
+	{ "name": "leg F L", "bone": "leg F L", "attachment": "leg F L" },
+	{ "name": "leg B R", "bone": "leg B R", "attachment": "leg B R" },
+	{ "name": "body", "bone": "body", "attachment": "body" },
+	{ "name": "leg B L", "bone": "leg B L", "attachment": "leg B L" },
+	{ "name": "lef F R", "bone": "lef F R", "attachment": "lef F R" },
+	{ "name": "cannon", "bone": "cannon", "attachment": "cannon" },
+	{ "name": "base", "bone": "base", "attachment": "base" },
+	{ "name": "hat", "bone": "hat", "attachment": "hat" },
+	{ "name": "Ice", "bone": "root" },
+	{ "name": "Poisoned", "bone": "Poisoned" }
+],
+"events": {
+	"AnimThrow": {}
+},
+"animations": {
+	"Die": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			},
+			"hat": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.2333, "angle": 55.68 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			},
+			"cannon": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.2333, "angle": 31.98 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			},
+			"base": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			},
+			"leg F L": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.2333, "angle": -67.68 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			},
+			"lef F R": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.2333, "angle": -63.71 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			},
+			"leg B R": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.2333, "angle": -79.9 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			},
+			"leg B L": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.2333, "angle": 46.64 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			},
+			"body": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 }
+				],
+				"translate": [
+					{ "time": 0.0 },
+					{ "time": 0.2333, "y": -35.05 }
+				]
+			},
+			"Poisoned": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 }
+				],
+				"translate": [
+					{ "time": 0.0 }
+				]
+			}
+		}
+	},
+	"GetFreeze": {
+		"slots": {
+			"Ice": {
+				"attachment": [
+					{ "name": "Ice", "time": 0.0 }
+				]
+			},
+			"body": {
+				"color": [
+					{ "color": "3276e8ff", "time": 0.0 }
+				]
+			},
+			"lef F R": {
+				"color": [
+					{ "color": "3276e8ff", "time": 0.0 }
+				]
+			},
+			"leg B L": {
+				"color": [
+					{ "color": "3276e8ff", "time": 0.0 }
+				]
+			},
+			"leg B R": {
+				"color": [
+					{ "color": "3276e8ff", "time": 0.0 }
+				]
+			},
+			"leg F L": {
+				"color": [
+					{ "color": "3276e8ff", "time": 0.0 }
+				]
+			}
+		}
+	},
+	"GetPoisoned": {
+		"slots": {
+			"Poisoned": {
+				"attachment": [
+					{ "name": "Poisoned", "time": 0.0 }
+				]
+			},
+			"body": {
+				"color": [
+					{ "color": "f91e1eff", "time": 0.0 }
+				]
+			},
+			"lef F R": {
+				"color": [
+					{ "color": "f91e1eff", "time": 0.0 }
+				]
+			},
+			"leg B L": {
+				"color": [
+					{ "color": "f91e1eff", "time": 0.0 }
+				]
+			},
+			"leg B R": {
+				"color": [
+					{ "color": "f91e1eff", "time": 0.0 }
+				]
+			},
+			"leg F L": {
+				"color": [
+					{ "color": "f91e1eff", "time": 0.0 }
+				]
+			}
+		},
+		"bones": {
+			"Poisoned": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.7667, "angle": 0.0 }
+				],
+				"translate": [
+					{ "time": 0.0 },
+					{ "time": 0.7667, "y": 300.61 }
+				],
+				"scale": [
+					{ "time": 0.0, "x": 1.0, "y": 1.0 },
+					{ "time": 0.4, "x": 2, "y": 2 },
+					{ "time": 0.7667, "x": 1.0, "y": 1.0 }
+				]
+			}
+		}
+	},
+	"animation": {},
+	"idle": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			},
+			"hat": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.4, "angle": -4.29 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			},
+			"cannon": {
+				"rotate": [
+					{ "angle": -17.73, "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8, "angle": -17.73 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			},
+			"base": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			},
+			"leg F L": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.4, "angle": -3.91 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			},
+			"lef F R": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.4, "angle": 6.02 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			},
+			"leg B R": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.4, "angle": -8.27 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			},
+			"leg B L": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.4, "angle": 11.47 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			},
+			"body": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "time": 0.0 },
+					{ "time": 0.4, "y": -2.82 },
+					{ "time": 0.8 }
+				]
+			},
+			"Poisoned": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.8, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8 }
+				]
+			}
+		}
+	},
+	"shoot": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			},
+			"hat": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.1667, "angle": -11.84 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			},
+			"cannon": {
+				"rotate": [
+					{ "angle": -17.73, "time": 0.0 },
+					{ "time": 0.1667, "angle": -25.62 },
+					{ "time": 0.3333, "angle": -21.68 },
+					{ "time": 0.5, "angle": -17.73 }
+				],
+				"translate": [
+					{ "time": 0.0 },
+					{ "time": 0.1667, "x": -14.4, "y": -18.97 },
+					{ "time": 0.5 }
+				]
+			},
+			"base": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.1667, "angle": -6.47 },
+					{ "time": 0.3333, "angle": -8.24 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			},
+			"leg F L": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.1667, "angle": -16.07 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			},
+			"lef F R": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.1667, "angle": 9.73 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			},
+			"leg B R": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.1667, "angle": -15.01 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			},
+			"leg B L": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.1667, "angle": 7.62 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			},
+			"body": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.1667, "angle": -3.46 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			},
+			"Poisoned": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.5, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.5 }
+				]
+			}
+		},
+		"events": [
+			{ "time": 0.1, "name": "AnimThrow" }
+		]
+	},
+	"walk": {
+		"bones": {
+			"root": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.8333, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"Poisoned": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.8333, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"body": {
+				"rotate": [
+					{ "angle": 1.31, "time": 0.0 },
+					{ "time": 0.4, "angle": -9.54 },
+					{ "time": 0.8333, "angle": 1.31 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"leg B L": {
+				"rotate": [
+					{ "angle": 13.24, "time": 0.0 },
+					{ "time": 0.2333, "angle": -42.32 },
+					{ "time": 0.5, "angle": 27.91 },
+					{ "time": 0.8333, "angle": 13.24 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"leg B R": {
+				"rotate": [
+					{ "angle": 8.5, "time": 0.0 },
+					{ "time": 0.2333, "angle": -22.61 },
+					{ "time": 0.5, "angle": 21.81 },
+					{ "time": 0.8333, "angle": 8.5 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"lef F R": {
+				"rotate": [
+					{ "angle": -23.25, "time": 0.0 },
+					{ "time": 0.2333, "angle": 14.04 },
+					{ "time": 0.5, "angle": -38.41 },
+					{ "time": 0.8333, "angle": -23.25 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"leg F L": {
+				"rotate": [
+					{ "angle": -19.71, "time": 0.0 },
+					{ "time": 0.2333, "angle": 18.08 },
+					{ "time": 0.5, "angle": -45.15 },
+					{ "time": 0.8333, "angle": -19.71 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"base": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.8333, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"cannon": {
+				"rotate": [
+					{ "time": 0.0, "angle": 0.0 },
+					{ "time": 0.3333, "angle": 7.21 },
+					{ "time": 0.6333, "angle": -8.38 },
+					{ "time": 0.8333, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			},
+			"hat": {
+				"rotate": [
+					{ "curve": "stepped", "time": 0.0, "angle": 0.0 },
+					{ "time": 0.8333, "angle": 0.0 }
+				],
+				"translate": [
+					{ "curve": "stepped", "time": 0.0 },
+					{ "time": 0.8333 }
+				]
+			}
+		}
+	}
+},
+"skins": {
+	"default": {
+		"Ice": {
+			"Ice": { "x": -11.73, "y": 193.34, "scaleX": 2.4621, "scaleY": 2.4621, "width": 169, "height": 172 }
+		},
+		"Poisoned": {
+			"Poisoned": { "x": -0.19, "y": 0.54, "width": 78, "height": 66 }
+		},
+		"base": {
+			"base": { "x": 45.07, "y": -5.14, "rotation": -93.76, "width": 169, "height": 132 }
+		},
+		"body": {
+			"body": { "x": 92.58, "y": 21.36, "rotation": -95.91, "width": 402, "height": 278 }
+		},
+		"cannon": {
+			"cannon": { "x": 42.65, "y": -16.55, "rotation": -165.13, "width": 302, "height": 178 }
+		},
+		"hat": {
+			"hat": { "x": 44.95, "y": -15.01, "rotation": -110.61, "width": 240, "height": 158 }
+		},
+		"lef F R": {
+			"lef F R": { "x": 27.85, "y": -4.3, "rotation": 89.26, "width": 68, "height": 69 }
+		},
+		"leg B L": {
+			"leg B L": { "x": 23.12, "y": 0.31, "rotation": 80.04, "width": 70, "height": 68 }
+		},
+		"leg B R": {
+			"leg B R": { "x": 18.82, "y": 2.37, "rotation": 87.58, "width": 70, "height": 68 }
+		},
+		"leg F L": {
+			"leg F L": { "x": 21.76, "y": -1.53, "rotation": 99.46, "width": 68, "height": 69 }
+		}
+	}
+}
+}

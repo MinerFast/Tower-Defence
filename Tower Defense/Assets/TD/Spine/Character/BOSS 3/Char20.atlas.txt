@@ -1,0 +1,83 @@
+
+Char20.png
+size: 512,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Body
+  rotate: false
+  xy: 2, 255
+  size: 199, 238
+  orig: 199, 238
+  offset: 0, 0
+  index: -1
+Hand-B1
+  rotate: false
+  xy: 388, 309
+  size: 69, 81
+  orig: 69, 81
+  offset: 0, 0
+  index: -1
+Hand-B2
+  rotate: true
+  xy: 2, 2
+  size: 77, 155
+  orig: 77, 155
+  offset: 0, 0
+  index: -1
+Hand-F1
+  rotate: false
+  xy: 314, 393
+  size: 96, 100
+  orig: 96, 100
+  offset: 0, 0
+  index: -1
+Hand-F2
+  rotate: false
+  xy: 203, 301
+  size: 109, 192
+  orig: 109, 192
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 412, 392
+  size: 101, 80
+  orig: 101, 80
+  offset: 0, 0
+  index: -1
+Ice
+  rotate: false
+  xy: 2, 81
+  size: 169, 172
+  orig: 169, 172
+  offset: 0, 0
+  index: -1
+Leg-B
+  rotate: true
+  xy: 203, 236
+  size: 63, 95
+  orig: 63, 95
+  offset: 0, 0
+  index: -1
+Leg-F
+  rotate: false
+  xy: 314, 283
+  size: 72, 108
+  orig: 72, 108
+  offset: 0, 0
+  index: -1
+Poisoned
+  rotate: false
+  xy: 173, 168
+  size: 78, 66
+  orig: 78, 66
+  offset: 0, 0
+  index: -1
+shadow
+  rotate: true
+  xy: 173, 81
+  size: 85, 17
+  orig: 85, 17
+  offset: 0, 0
+  index: -1
