@@ -85,12 +85,18 @@ public class ShopItemUpgrade : MonoBehaviour
         for (int i = 0; i < upgradeDots.Length; i++)
         {
             if (i < number)
+            {
                 upgradeDots[i].sprite = dotImageOn;
+            }
             else
+            {
                 upgradeDots[i].sprite = dotImageOff;
+            }
 
             if (i >= maxUpgrade)
+            {
                 upgradeDots[i].gameObject.SetActive(false);
+            }
         }
     }
 
@@ -123,8 +129,11 @@ public class ShopItemUpgrade : MonoBehaviour
         else
         {
             SoundManager.PlaySfx(SoundManager.Instance.soundNotEnoughCoin);
+
             if (AdsManager.Instance && AdsManager.Instance.isRewardedAdReady())
+            {
                 NotEnoughCoins.Instance.ShowUp();
+            }
         }
     }
 }

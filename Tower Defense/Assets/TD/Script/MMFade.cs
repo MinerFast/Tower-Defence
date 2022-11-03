@@ -3,169 +3,191 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
-	/// <summary>
-	/// Various static methods used throughout the Infinite Runner Engine and the Corgi Engine.
-	/// </summary>
+/// <summary>
+/// Various static methods used throughout the Infinite Runner Engine and the Corgi Engine.
+/// </summary>
 
-	public static class MMFade
-	{
+public static class MMFade
+{
+    #region IEnumerator
+    /// <summary>
+    /// Fades the specified image to the target opacity and duration.
+    /// </summary>
+    /// <param name="target">Target.</param>
+    /// <param name="opacity">Opacity.</param>
+    /// <param name="duration">Duration.</param>
+    public static IEnumerator FadeImage(Image target, float duration, Color color)
+    {
+        if (target == null)
+        {
+            yield break;
+        }
 
-		/// <summary>
-		/// Fades the specified image to the target opacity and duration.
-		/// </summary>
-		/// <param name="target">Target.</param>
-		/// <param name="opacity">Opacity.</param>
-		/// <param name="duration">Duration.</param>
-		public static IEnumerator FadeImage(Image target, float duration, Color color)
-		{
-			if (target==null)
-				yield break;
+        float alpha = target.color.a;
 
-			float alpha = target.color.a;
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
+        {
+            if (target == null)
+            {
+                yield break;
+            }
+            Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
+            target.color = newColor;
+            yield return null;
+        }
+        target.color = color;
 
-			for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
-			{
-				if (target==null)
-					yield break;
-				Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
-				target.color=newColor;
-				yield return null;
-			}
-			target.color=color;
+    }
+    /// <summary>
+    /// Fades the specified image to the target opacity and duration.
+    /// </summary>
+    /// <param name="target">Target.</param>
+    /// <param name="opacity">Opacity.</param>
+    /// <param name="duration">Duration.</param>
+    public static IEnumerator FadeText(Text target, float duration, Color color)
+    {
+        if (target == null)
+        {
+            yield break;
+        }
 
-		}
-		/// <summary>
-		/// Fades the specified image to the target opacity and duration.
-		/// </summary>
-		/// <param name="target">Target.</param>
-		/// <param name="opacity">Opacity.</param>
-		/// <param name="duration">Duration.</param>
-		public static IEnumerator FadeText(Text target, float duration, Color color)
-		{
-			if (target==null)
-				yield break;
+        float alpha = target.color.a;
 
-			float alpha = target.color.a;
+        for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
+        {
+            if (target == null)
+            {
+                yield break;
+            }
+            Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
+            target.color = newColor;
+            yield return null;
+        }
+        target.color = color;
+    }
+    /// <summary>
+    /// Fades the specified image to the target opacity and duration.
+    /// </summary>
+    /// <param name="target">Target.</param>
+    /// <param name="opacity">Opacity.</param>
+    /// <param name="duration">Duration.</param>
+    public static IEnumerator FadeSprite(SpriteRenderer target, float duration, Color color)
+    {
+        if (target == null)
+        {
+            yield break;
+        }
 
-			for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / duration)
-			{
-				if (target==null)
-					yield break;
-				Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
-				target.color=newColor;
-				yield return null;
-			}			
-			target.color=color;
-		}
-		/// <summary>
-		/// Fades the specified image to the target opacity and duration.
-		/// </summary>
-		/// <param name="target">Target.</param>
-		/// <param name="opacity">Opacity.</param>
-		/// <param name="duration">Duration.</param>
-		public static IEnumerator FadeSprite(SpriteRenderer target, float duration, Color color)
-		{
-			if (target==null)
-				yield break;
+        float alpha = target.material.color.a;
 
-			float alpha = target.material.color.a;
+        float t = 0f;
+        while (t < 1.0f)
+        {
+            if (target == null)
+            {
+                yield break;
+            }
 
-			float t=0f;
-			while (t<1.0f)
-			{
-				if (target==null)
-					yield break;
+            Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
+            target.material.color = newColor;
 
-				Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
-				target.material.color=newColor;
+            t += Time.deltaTime / duration;
 
-				t += Time.deltaTime / duration;
+            yield return null;
 
-				yield return null;
+        }
+        Color finalColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
+        target.material.color = finalColor;
+    }
+    public static IEnumerator FadeCanvasGroup(CanvasGroup target, float duration, float targetAlpha)
+    {
+        if (target == null)
+        {
+            yield break;
+        }
 
-			}
-			Color finalColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
-			target.material.color=finalColor;
-		}
+        float currentAlpha = target.alpha;
 
-	public static IEnumerator FadeSpriteRenderer(SpriteRenderer target, float duration, Color color)
-	{
-		if (target==null)
-			yield break;
+        float t = 0f;
+        while (t < 1.0f)
+        {
+            if (target == null)
+            {
+                yield break;
+            }
 
-		float alpha = target.color.a;
+            float newAlpha = Mathf.SmoothStep(currentAlpha, targetAlpha, t);
+            target.alpha = newAlpha;
 
-		float t=0f;
-		while (t<1.0f)
-		{
-			if (target==null)
-				yield break;
+            t += Time.deltaTime / duration;
 
-			Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
-			target.color=newColor;
+            yield return null;
 
-			t += Time.deltaTime / duration;
+        }
+        target.alpha = targetAlpha;
+    }
+    public static IEnumerator FadeTexture(Material target, float duration, Color color)
+    {
+        if (target == null)
+        {
+            yield break;
+        }
 
-			yield return null;
+        float alpha = target.color.a;
+        float r = target.color.r;
+        float g = target.color.g;
+        float b = target.color.b;
 
-		}
-		Color finalColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
-		target.color=finalColor;
-	}
+        float t = 0f;
+        while (t < 1.0f)
+        {
+            if (target == null)
+            {
+                yield break;
+            }
 
-	public static IEnumerator FadeTexture(Material target, float duration, Color color)
-	{
-		if (target==null)
-			yield break;
 
-		float alpha = target.color.a;
-		float r = target.color.r;
-		float g = target.color.g;
-		float b = target.color.b;
+            Color newColor = new Color(Mathf.SmoothStep(r, color.r, t), Mathf.SmoothStep(g, color.g, t), Mathf.SmoothStep(b, color.b, t), Mathf.SmoothStep(alpha, color.a, t));
+            target.color = newColor;
 
-		float t=0f;
-		while (t<1.0f)
-		{
-			if (target==null)
-				yield break;
+            t += Time.deltaTime / duration;
 
-//			Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
+            yield return null;
 
-			Color newColor = new Color(Mathf.SmoothStep(r,color.r,t), Mathf.SmoothStep(g,color.g,t), Mathf.SmoothStep(b,color.b,t), Mathf.SmoothStep(alpha,color.a,t));
-			target.color=newColor;
+        }
+        Color finalColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
+        target.color = finalColor;
+    }
+    public static IEnumerator FadeSpriteRenderer(SpriteRenderer target, float duration, Color color)
+    {
+        if (target == null)
+        {
+            yield break;
+        }
 
-			t += Time.deltaTime / duration;
+        float alpha = target.color.a;
 
-			yield return null;
+        float t = 0f;
+        while (t < 1.0f)
+        {
+            if (target == null)
+            {
+                yield break;
+            }
 
-		}
-		Color finalColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
-		target.color=finalColor;
-	}
+            Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
+            target.color = newColor;
 
-		public static IEnumerator FadeCanvasGroup(CanvasGroup target, float duration, float targetAlpha)
-		{
-			if (target==null)
-				yield break;
+            t += Time.deltaTime / duration;
 
-			float currentAlpha = target.alpha;
+            yield return null;
 
-			float t=0f;
-			while (t<1.0f)
-			{
-				if (target==null)
-					yield break;
+        }
+        Color finalColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha, color.a, t));
+        target.color = finalColor;
+    }
+    #endregion
 
-				float newAlpha =Mathf.SmoothStep(currentAlpha,targetAlpha,t);
-				target.alpha=newAlpha;
 
-				t += Time.deltaTime / duration;
-
-				yield return null;
-
-			}
-			target.alpha=targetAlpha;
-		}
-
-	}
+}
 

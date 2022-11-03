@@ -11,27 +11,34 @@ public class BoostItemUI : MonoBehaviour
     public GameObject DA_Icon;
     public Text DA_timerTxt;
     public int DA_Time = 25;
+
     [ReadOnly] public float DA_TimeCounter = 0;
+
     [Header("Triple Arrow")]
     public Text TA_remainTxt;
     public Button TA_Button;
     public GameObject TA_Icon;
     public Text TA_timerTxt;
     public int TA_Time = 20;
+
     [ReadOnly] public float TA_TimeCounter = 0;
+
     [Header("Poison Arrow")]
     public Text PA_remainTxt;
     public Button PA_Button;
     public GameObject PA_Icon;
     public Text PA_timerTxt;
     public int PA_Time = 30;
+
     [ReadOnly] public float PA_TimeCounter = 0;
+
     [Header("Freeze Arrow")]
     public Text FA_remainTxt;
     public Button FA_Button;
     public GameObject FA_Icon;
     public Text FA_timerTxt;
     public int FA_Time = 30;
+
     [ReadOnly] public float FA_TimeCounter = 0;
 
     [Header("Boost Item")]
@@ -42,7 +49,6 @@ public class BoostItemUI : MonoBehaviour
     [Space]
     public GameObject activeIcons;
 
-    // Start is called before the first frame update
     void Start()
     {
         DA_remainTxt.text = "x" + GlobalValue.ItemDoubleArrow;
@@ -66,16 +72,14 @@ public class BoostItemUI : MonoBehaviour
         activeIcons.SetActive(DA_Icon.activeSelf || TA_Icon.activeSelf || PA_Icon.activeSelf || FA_Icon.activeSelf);
     }
 
-    #region Double Arrow
     public void ActiveDoubleArror()
     {
         SoundManager.PlaySfx(SoundManager.Instance.BTsoundUseBoost);
         GlobalValue.ItemDoubleArrow--;
         DA_remainTxt.text = "x" + GlobalValue.ItemDoubleArrow;
-        DA_Button.interactable = false;     //only active per game level
+        DA_Button.interactable = false;
 
         ArcherManager.Instance.SetNumberArrow(ARCHER_FIRE_ARROWS.DOUBLE);
-        //DA_Icon.SetActive(true);
         RunTimerAutoHideBoostPanel();
         DoubleArrowTimerCoDo = DoubleArrowTimerCo();
         StartCoroutine(DoubleArrowTimerCoDo);
@@ -98,22 +102,24 @@ public class BoostItemUI : MonoBehaviour
         DA_Button.interactable = true && GlobalValue.ItemDoubleArrow > 0;
         ArcherManager.Instance.SetNumberArrow(ARCHER_FIRE_ARROWS.ONE);
     }
-    #endregion
 
-    #region Triple Arrow
     public void ActiveTripleArrow()
     {
         SoundManager.PlaySfx(SoundManager.Instance.BTsoundUseBoost);
         GlobalValue.ItemTripleArrow--;
+
         TA_remainTxt.text = "x" + GlobalValue.ItemTripleArrow;
-        TA_Button.interactable = false;     //only active per game level
+        TA_Button.interactable = false;
         DA_Button.interactable = false;
+
         ArcherManager.Instance.SetNumberArrow(ARCHER_FIRE_ARROWS.TRIPLE);
-        
+
         RunTimerAutoHideBoostPanel();
 
         if (DoubleArrowTimerCoDo != null)
+        {
             StopCoroutine(DoubleArrowTimerCoDo);
+        }
 
         StartCoroutine(TripleArrowTimerCo());
     }
@@ -124,6 +130,7 @@ public class BoostItemUI : MonoBehaviour
         TA_Icon.SetActive(true);
 
         TA_TimeCounter = (float)TA_Time;
+
         while (TA_TimeCounter > 0)
         {
             TA_TimeCounter -= Time.deltaTime;
@@ -132,19 +139,22 @@ public class BoostItemUI : MonoBehaviour
         }
 
         TA_Icon.SetActive(false);
+
         TA_Button.interactable = true && GlobalValue.ItemTripleArrow > 0;
         DA_Button.interactable = true && GlobalValue.ItemDoubleArrow > 0;
+
         ArcherManager.Instance.SetNumberArrow(ARCHER_FIRE_ARROWS.ONE);
     }
-    #endregion
 
-    #region Poison Arrow
-    public void ActivePoisonArrow() {
+    public void ActivePoisonArrow()
+    {
         SoundManager.PlaySfx(SoundManager.Instance.BTsoundUseBoost);
         GlobalValue.ItemPoison--;
+
         PA_remainTxt.text = "x" + GlobalValue.ItemPoison;
-        PA_Button.interactable = false; 
+        PA_Button.interactable = false;
         FA_Button.interactable = false;
+
         ArcherManager.Instance.SetAbility(ARCHER_ABILITY.POSION);
 
         RunTimerAutoHideBoostPanel();
@@ -154,29 +164,33 @@ public class BoostItemUI : MonoBehaviour
     IEnumerator PoisonArrowTimerCo()
     {
         PA_Icon.SetActive(true);
-       
+
         PA_TimeCounter = (float)PA_Time;
         while (PA_TimeCounter > 0)
         {
-            PA_TimeCounter -= Time.deltaTime;
+            PA_TimeCounter = PA_TimeCounter - Time.deltaTime;
             PA_timerTxt.text = (int)PA_TimeCounter + "";
-           yield return null;
+            yield return null;
         }
 
         PA_Icon.SetActive(false);
+
         PA_Button.interactable = true && GlobalValue.ItemPoison > 0;
         FA_Button.interactable = true && GlobalValue.ItemFreeze > 0;
+
         ArcherManager.Instance.SetAbility(ARCHER_ABILITY.NONE);
     }
-    #endregion
 
-    #region Freeze Arrow
-    public void ActiveFrezzeArrow() {
+    public void ActiveFrezzeArrow()
+    {
         SoundManager.PlaySfx(SoundManager.Instance.BTsoundUseBoost);
+
         GlobalValue.ItemFreeze--;
+
         FA_remainTxt.text = "x" + GlobalValue.ItemFreeze;
         FA_Button.interactable = false;
         PA_Button.interactable = false;
+
         ArcherManager.Instance.SetAbility(ARCHER_ABILITY.FREEZE);
 
         RunTimerAutoHideBoostPanel();
@@ -188,7 +202,8 @@ public class BoostItemUI : MonoBehaviour
     {
         FA_Icon.SetActive(true);
         FA_TimeCounter = (float)FA_Time;
-        while(FA_TimeCounter > 0)
+
+        while (FA_TimeCounter > 0)
         {
             FA_TimeCounter -= Time.deltaTime;
             FA_timerTxt.text = (int)FA_TimeCounter + "";
@@ -196,13 +211,13 @@ public class BoostItemUI : MonoBehaviour
         }
 
         FA_Icon.SetActive(false);
+
         PA_Button.interactable = true && GlobalValue.ItemPoison > 0;
         FA_Button.interactable = true && GlobalValue.ItemFreeze > 0;
+
         ArcherManager.Instance.SetAbility(ARCHER_ABILITY.NONE);
     }
-    #endregion
 
-    #region BOOST PANEL
     IEnumerator BoostItemHideCoDo;
     public void BoostItem()
     {
@@ -213,8 +228,10 @@ public class BoostItemUI : MonoBehaviour
         else
         {
             SoundManager.PlaySfx(SoundManager.Instance.BTsoundOpen);
+
             boostItemAnim.SetBool("show", true);
             boostButtonAnim.SetBool("on", true);
+
             RunTimerAutoHideBoostPanel();
         }
     }
@@ -228,18 +245,18 @@ public class BoostItemUI : MonoBehaviour
         StartCoroutine(BoostItemHideCoDo);
     }
 
-    IEnumerator BoostItemHideCo(float delay)
+    IEnumerator BoostItemHideCo(float timeDelay)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(timeDelay);
         HideBoostPanel();
     }
 
     void HideBoostPanel()
     {
         SoundManager.PlaySfx(SoundManager.Instance.BTsoundHide);
+
         boostItemAnim.SetBool("show", false);
         boostButtonAnim.SetBool("on", false);
     }
 
-    #endregion
 }

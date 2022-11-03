@@ -6,17 +6,8 @@ public class FixedCamera : MonoBehaviour
 {
     [ReadOnly] public float fixedWidth;
     [ReadOnly] public int orthographicSize = 5;
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (GameMode.Instance)
-        {
-            //fixedWidth = orthographicSize * (GameMode.Instance.resolution.x / GameMode.Instance.resolution.y);
-            fixedWidth = (float)orthographicSize * ((float)Screen.width / (float)Screen.height);
-        }
-    }
 
-    // Update is called once per frame
+    #region MonoBehaviour
     void Update()
     {
         if (GameMode.Instance)
@@ -24,4 +15,13 @@ public class FixedCamera : MonoBehaviour
             Camera.main.orthographicSize = fixedWidth / (Camera.main.aspect);
         }
     }
+    void Start()
+    {
+        if (GameMode.Instance)
+        {
+            fixedWidth = (float)orthographicSize * ((float)Screen.width / (float)Screen.height);
+        }
+    }
+
+    #endregion
 }

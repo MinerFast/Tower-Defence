@@ -7,7 +7,6 @@ public class Tutorial : MonoBehaviour
     public float delayShow = 3;
     public CanvasGroup canvasG;
 
-    // Start is called before the first frame update
     void Start()
     {
         canvasG.alpha = 0;

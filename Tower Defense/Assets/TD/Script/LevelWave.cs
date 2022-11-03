@@ -5,5 +5,6 @@ using UnityEngine;
 public class LevelWave : MonoBehaviour
 {
     public int level = 1;
+
     public EnemyWave[] Waves;
 }

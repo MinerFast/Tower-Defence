@@ -6,16 +6,18 @@ using UnityEngine.UI;
 public class UI_UI : MonoBehaviour
 {
     public Slider healthSlider;
-    public Text health;
-
     public Slider enemyWavePercentSlider;
 
-    float healthValue, enemyWaveValue;
-    public float lerpSpeed = 1;
-
+    public Text health;
     public Text pointTxt;
     public Text levelName;
 
+
+    float healthValue, enemyWaveValue;
+
+    public float lerpSpeed = 1;
+
+    #region MonoBehaviour
     private void Start()
     {
         healthValue = 1;
@@ -33,17 +35,17 @@ public class UI_UI : MonoBehaviour
 
         pointTxt.text = GameManager.Instance.Point + "";
     }
-
-    public void UpdateHealthbar(float currentHealth, float maxHealth)
+    #endregion
+    #region Update
+    public void UpdateHealthbar(float currentHealthCount, float maxHealthCount)
     {
-        healthValue = Mathf.Clamp01(currentHealth / maxHealth);
-        health.text = currentHealth + "/" + maxHealth;
+        healthValue = Mathf.Clamp01(currentHealthCount / maxHealthCount);
+        health.text = currentHealthCount + "/" + maxHealthCount;
     }
 
-    public void UpdateEnemyWavePercent(float currentSpawn, float maxValue)
+    public void UpdateEnemyWavePercent(float currentSpawnCount, float maxValueCount)
     {
-        enemyWaveValue = Mathf.Clamp01(currentSpawn / maxValue);
+        enemyWaveValue = Mathf.Clamp01(currentSpawnCount / maxValueCount);
     }
-    
-   
+    #endregion
 }

@@ -2,26 +2,40 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class MapControllerUI : MonoBehaviour {
-//	public Transform BlockLevel;
-	public RectTransform BlockLevel;
-	public int howManyBlocks = 3;
+public class MapControllerUI : MonoBehaviour
+{
 
-	public float step = 720f;
-    
-	public Image[] Dots;
-	private float newPosX = 0;
+    public RectTransform BlockLevel;
 
-	int currentPos = 0;
-	public AudioClip music;
-	// Use this for initialization
-	void Start () {
+    public int howManyBlocks = 3;
+    int currentPos = 0;
+
+    public float step = 720f;
+    private float newPosX = 0;
+
+    public Image[] Dots;
+
+    public AudioClip music;
+
+    #region MonoBehaviour
+    void Start()
+    {
         SetDots();
     }
 
+    void OnEnable()
+    {
+        SoundManager.PlayMusic(music);
+    }
+
+    void OnDisable()
+    {
+        SoundManager.PlayMusic(SoundManager.Instance.musicsGame);
+    }
+    #endregion
     void SetDots()
     {
-        foreach(var obj in Dots)
+        foreach (var obj in Dots)
         {
             obj.color = new Color(1, 1, 1, 0.5f);
             obj.rectTransform.sizeDelta = new Vector2(28, 28);
@@ -31,34 +45,30 @@ public class MapControllerUI : MonoBehaviour {
         Dots[currentPos].rectTransform.sizeDelta = new Vector2(38, 38);
     }
 
-	void OnEnable(){
-		SoundManager.PlayMusic (music);
-		Debug.LogWarning ("ON ENALBE");
-
-	}
-
-	void OnDisable(){
-		SoundManager.PlayMusic (SoundManager.Instance.musicsGame);
-	}
 
     public void SetCurrentWorld(int world)
     {
-        currentPos += (world - 1);
+        var magicCount = 1;
+        currentPos += (world - magicCount);
 
-        newPosX -= step * (world - 1);
-        newPosX = Mathf.Clamp(newPosX, -step * (howManyBlocks - 1), 0);
+        newPosX -= step * (world - magicCount);
+        newPosX = Mathf.Clamp(newPosX, -step * (howManyBlocks - magicCount), 0);
 
         SetMapPosition();
 
         SetDots();
     }
 
+    private Vector2 MapPos()
+    {
+        return new Vector2(newPosX, BlockLevel.anchoredPosition.y);
+    }
     public void SetMapPosition()
     {
-        BlockLevel.anchoredPosition = new Vector2(newPosX, BlockLevel.anchoredPosition.y);
+        BlockLevel.anchoredPosition = MapPos();
     }
 
-    bool allowPressButton = true;
+    private bool allowPressButton = true;
     public void Next()
     {
         if (allowPressButton)
@@ -69,6 +79,7 @@ public class MapControllerUI : MonoBehaviour {
 
     IEnumerator NextCo()
     {
+        var magicCount = 0.15f;
         allowPressButton = false;
 
         SoundManager.Click();
@@ -79,26 +90,19 @@ public class MapControllerUI : MonoBehaviour {
 
             newPosX -= step;
             newPosX = Mathf.Clamp(newPosX, -step * (howManyBlocks - 1), 0);
-            
+
         }
         else
         {
             allowPressButton = true;
             yield break;
-
-            //currentPos = 0;
-
-            //newPosX = 0;
-            //newPosX = Mathf.Clamp(newPosX, -step * (howManyBlocks - 1), 0);
-
-
         }
 
-        BlackScreenUI.instance.Show(0.15f);
+        BlackScreenUI.instance.Show(magicCount);
 
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(magicCount);
         SetMapPosition();
-        BlackScreenUI.instance.Hide(0.15f);
+        BlackScreenUI.instance.Hide(magicCount);
 
         SetDots();
 
@@ -125,18 +129,11 @@ public class MapControllerUI : MonoBehaviour {
 
             newPosX += step;
             newPosX = Mathf.Clamp(newPosX, -step * (howManyBlocks - 1), 0);
-
-
         }
         else
         {
             allowPressButton = true;
             yield break;
-            //currentPos = howManyBlocks - 1;
-
-            //newPosX = -999999;
-            //newPosX = Mathf.Clamp(newPosX, -step * (howManyBlocks - 1), 0);
-
         }
 
         BlackScreenUI.instance.Show(0.15f);
@@ -152,9 +149,12 @@ public class MapControllerUI : MonoBehaviour {
 
     }
 
-	public void UnlockAllLevels(){
-		GlobalValue.LevelPass = (GlobalValue.LevelPass + 1000);
-		UnityEngine.SceneManagement.SceneManager.LoadScene (UnityEngine.SceneManagement.SceneManager.GetActiveScene ().buildIndex);
-		SoundManager.Click ();
-	}
+    public void UnlockAllLevels()
+    {
+        GlobalValue.LevelPass = (GlobalValue.LevelPass + 1000);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+
+        SoundManager.Click();
+    }
 }

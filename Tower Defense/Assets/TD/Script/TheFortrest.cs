@@ -10,34 +10,15 @@ public class TheFortrest : MonoBehaviour, ICanTakeDamage
     [ReadOnly] public float currentHealth;
 
     [Header("SHAKNG")]
-    public float speed = 30f; //how fast it shakes
-    public float amount = 0.5f; //how much it shakes
+    public float speed = 30f;
+    public float amount = 0.5f;
     public float shakeTime = 0.3f;
     public bool shakeX, shakeY;
 
     Vector2 startingPos;
     IEnumerator ShakeCoDo;
 
-    //void Start()
-    //{
-        
-    //}
-
-    IEnumerator ShakeCo(float time)
-    {
-        float counter = 0;
-        while (counter < time)
-        {
-            transform.position = startingPos + new Vector2(Mathf.Sin(Time.time * speed) * amount * (shakeX?1:0), Mathf.Sin(Time.time * speed) * amount * (shakeY ? 1 : 0));
-
-            yield return null;
-            counter += Time.deltaTime;
-        }
-
-        transform.position = startingPos;
-    }
-
-    // Start is called before the first frame update
+    #region MonoBehaviour
     void Start()
     {
         startingPos = transform.position;
@@ -45,6 +26,21 @@ public class TheFortrest : MonoBehaviour, ICanTakeDamage
         maxHealth += extraHealth;
         currentHealth = maxHealth;
         MenuManager.Instance.UpdateHealthbar(currentHealth, maxHealth);
+    }
+    #endregion
+
+    IEnumerator ShakeCo(float time)
+    {
+        float counter = 0;
+        while (counter < time)
+        {
+            transform.position = startingPos + new Vector2(Mathf.Sin(Time.time * speed) * amount * (shakeX ? 1 : 0), Mathf.Sin(Time.time * speed) * amount * (shakeY ? 1 : 0));
+
+            yield return null;
+            counter += Time.deltaTime;
+        }
+
+        transform.position = startingPos;
     }
 
     public void TakeDamage(float damage, Vector2 force, Vector2 hitPoint, GameObject instigator, BODYPART bodyPart = BODYPART.NONE, WeaponEffect weaponEffect = null)
@@ -59,7 +55,9 @@ public class TheFortrest : MonoBehaviour, ICanTakeDamage
         else
         {
             if (ShakeCoDo != null)
+            {
                 StopCoroutine(ShakeCoDo);
+            }
 
             ShakeCoDo = ShakeCo(shakeTime);
             StartCoroutine(ShakeCoDo);

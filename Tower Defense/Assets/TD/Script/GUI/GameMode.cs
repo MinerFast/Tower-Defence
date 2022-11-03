@@ -6,14 +6,17 @@ using UnityEngine.Advertisements;
 public class GameMode : MonoBehaviour
 {
     public static GameMode Instance;
+
     [Header("UNITY AD SETUP")]
+
     public string UNITY_ANDROID_ID = "1486550";
     public string UNITY_IOS_ID = "1486551";
     public bool isTestMode = true;
+
     public AudioClip soundReward;
+
     [Tooltip("Show video ad after how many time Victort or Gameover")]
     public int showVideoAdAfter = 3;
-    int counter = 0;
 
     [Header("SHOP SETUP")]
     public int doubleArrowPrice = 1000;
@@ -23,36 +26,17 @@ public class GameMode : MonoBehaviour
     public int upgradeArcherPrice = 1000;
     public int upgradeLongShootrice = 1000;
     public int upgradeFortressPrice = 1000;
-    //[Space]
-    //public int watchVideoAdRewarded = 300;
+
 
     [Header("FPS DISPLAY")]
    
     public bool showInfor = true;
-    //public Vector2 resolution = new Vector2(1280, 720);
     public int setFPS = 60;
     float deltaTime = 0.0f;
 
     public Purchaser purchase;
 
-    public void BuyItem(int id)
-    {
-        switch (id)
-        {
-            case 1:
-                purchase.BuyItem1();
-                break;
-            case 2:
-                purchase.BuyItem2();
-                break;
-            case 3:
-                purchase.BuyItem3();
-                break;
-            default:
-                break;
-        }
-    }
-
+    #region MonoBehaviour
     private void Awake()
     {
         Instance = this;
@@ -60,11 +44,9 @@ public class GameMode : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        //Screen.SetResolution((int)resolution.x, (int)resolution.y, true);
         Application.targetFrameRate = setFPS;
 
         string gameId = "";
@@ -80,7 +62,6 @@ public class GameMode : MonoBehaviour
         }
     }
 
-    #region FPS DISPLAY
     void Update()
     {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
@@ -102,11 +83,6 @@ public class GameMode : MonoBehaviour
         }
     }
 
-    public void ResetDATA()
-    {
-        PlayerPrefs.DeleteAll();
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-    }
 
     void OnGUI()
     {
@@ -132,58 +108,27 @@ public class GameMode : MonoBehaviour
         }
     }
     #endregion
+    public void BuyItem(int id)
+    {
+        switch (id)
+        {
+            case 1:
+                purchase.BuyItem1();
+                break;
+            case 2:
+                purchase.BuyItem2();
+                break;
+            case 3:
+                purchase.BuyItem3();
+                break;
+            default:
+                break;
+        }
+    }
+    public void ResetDATA()
+    {
+        PlayerPrefs.DeleteAll();
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
 
-    //#region UNITY AD
-    //public bool isRewardedAdReady()
-    //{
-    //    return Advertisement.IsReady("rewardedVideo");
-    //}
-
-    //public void ShowRewardVideo()
-    //{
-    //    SoundManager.Click();
-    //    if (Advertisement.IsReady("rewardedVideo"))
-    //    {
-    //        var options = new ShowOptions { resultCallback = HandleShowResult };
-    //        Advertisement.Show("rewardedVideo", options);
-    //    }
-    //}
-
-    //public void ShowNormalAd()
-    //{
-    //    counter++;
-    //    Debug.Log("AD COUNTER = " + counter);
-    //    if (counter < showVideoAdAfter)
-    //        return;
-        
-    //    if (Advertisement.IsReady())
-    //    {
-    //        Debug.Log("SHOW VIDEO AD");
-    //        counter = 0;
-    //        Advertisement.Show();
-    //    }
-    //}
-
-    //private void HandleShowResult(ShowResult result)
-    //{
-    //    switch (result)
-    //    {
-    //        case ShowResult.Finished:
-    //            Debug.Log("The ad was successfully shown.");
-
-    //            //	#if UNITY_EDITOR
-    //            GlobalValue.SavedCoins += watchVideoAdRewarded;
-    //            SoundManager.PlaySfx(soundReward);
-    //            //	#endif
-    //            break;
-    //        case ShowResult.Skipped:
-    //            Debug.Log("The ad was skipped before reaching the end.");
-
-    //            break;
-    //        case ShowResult.Failed:
-    //            Debug.LogError("The ad failed to be shown.");
-    //            break;
-    //    }
-    //}
-    //#endregion
 }

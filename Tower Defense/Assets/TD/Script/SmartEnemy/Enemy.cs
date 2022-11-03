@@ -4,139 +4,158 @@ using UnityEngine;
 using Spine;
 using Spine.Unity;
 
-public enum ATTACKTYPE {
-	RANGE,
-	MELEE,
-	THROW,
-	//CALLMINION,
-	NONE
+#region Enum
+public enum ATTACKTYPE
+{
+    RANGE,
+    MELEE,
+    THROW,
+    //CALLMINION,
+    NONE
 }
 
-public enum ENEMYSTATE {
-	SPAWNING,
-	IDLE,
-	ATTACK,
+public enum ENEMYSTATE
+{
+    SPAWNING,
+    IDLE,
+    ATTACK,
     WALK,
-	HIT,
-	DEATH
+    HIT,
+    DEATH
 }
 
-public enum ENEMYEFFECT {
-	NONE,
-	BURNING,
-	FREEZE,
-	SHOKING,
+public enum ENEMYEFFECT
+{
+    NONE,
+    BURNING,
+    FREEZE,
+    SHOKING,
     POISON,
-	EXPLOSION
+    EXPLOSION
 }
 
-public enum STARTBEHAVIOR {
-	NONE,
-	BURROWUP,
-	PARACHUTE,
+public enum STARTBEHAVIOR
+{
+    NONE,
+    BURROWUP,
+    PARACHUTE,
     WALK_RIGHT,
     WALK_LEFT
 }
 
-public enum DIEBEHAVIOR {
-	NORMAL,
-	DESTROY,
-	BLOWUP,
-	RAGDOLL
+public enum DIEBEHAVIOR
+{
+    NORMAL,
+    DESTROY,
+    BLOWUP,
+    RAGDOLL
 }
 
-public enum HITBEHAVIOR {
-	NONE,
-	CANKNOCKBACK
+public enum HITBEHAVIOR
+{
+    NONE,
+    CANKNOCKBACK
 }
 
-public enum ENEMYTYPE{
-	ONGROUND,
-	INWATER,
-	FLY
+public enum ENEMYTYPE
+{
+    ONGROUND,
+    INWATER,
+    FLY
 }
+#endregion
 
 
-//public enum ENEMYKIND { NORMAL, BOSS }
 
 [RequireComponent(typeof(CheckTargetHelper))]
 
-public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
-    //public ENEMYKIND enemyKind;
+public class Enemy : MonoBehaviour, ICanTakeDamage, IListener
+{
     [ReadOnly] public SkeletonMecanim skeleton;
     [HideInInspector] public ENEMYTYPE enemyType;
-	[Header("Set up Controller")]
-	public AnimatorOverrideController animOverrideController;
+    [Header("Set up Controller")]
+    public AnimatorOverrideController animOverrideController;
 
-	[Header("Setup")]
-	[ReadOnly] public float gravity = 35f;
-	public float walkSpeed = 3;
+    [Header("Setup")]
+    [ReadOnly] public float gravity = 35f;
+    public float walkSpeed = 3;
 
     [ReadOnly] public float multipleSpeed = 1;
 
-    public LayerMask enemyLayer;    //detect enemy to attack/chasing
-                                    //public float sockingTime = 0.5f;
-                                    //public float destroyTime = 1.5f;
+    public LayerMask enemyLayer;
+
 
     [Header("Point")]
-	public int killPoint = 5;
+    public int killPoint = 5;
     public int killHeadShoot = 20;
 
     [Header("HEALTH")]
-	[Range(0,5000)]
-	public int health = 100;
+    [Range(0, 5000)]
+
+    public int health = 100;
+
     [HideInInspector] public GameObject dieFX, hitFX;
+
     public GameObject disableFX;
+
     public Transform spawnDisableFX;
+
     [HideInInspector] public GameObject bloodPuddleFX;
     [HideInInspector] public GameObject[] explosionFX;
-    [HideInInspector] public Vector2 randomHitPoint = new Vector2 (0.2f, 0.2f);
-    [HideInInspector] public Vector2 randomBloodPuddlePoint = new Vector2 (0.5f, 0.25f);
+    [HideInInspector] public Vector2 randomHitPoint = new Vector2(0.2f, 0.2f);
+    [HideInInspector] public Vector2 randomBloodPuddlePoint = new Vector2(0.5f, 0.25f);
+
     public Vector2 healthBarOffset = new Vector2(0, 1.5f);
-    
+
     [ReadOnly] public ENEMYSTATE enemyState = ENEMYSTATE.IDLE;
-	protected ENEMYEFFECT enemyEffect;
-	[Space]
 
-	[Header("Freeze Option")]
-	public bool canBeFreeze = true;
-	//public float timeFreeze = 5;
-	public GameObject dieFrozenFX;
+    protected ENEMYEFFECT enemyEffect;
+    [Space]
 
-	[Header("Burning Option")]
-	public bool canBeBurn = true;
-	//public float timeBurn = 2;
-	public GameObject dieBurnFX;
-	float damageBurningPerFrame;
+    [Header("Freeze Option")]
+
+    public bool canBeFreeze = true;
+
+    public GameObject dieFrozenFX;
+
+    [Header("Burning Option")]
+    public bool canBeBurn = true;
+
+    public GameObject dieBurnFX;
+
+    float damageBurningPerFrame;
 
     [Header("Poison Option")]
     public bool canBePoison = true;
+
     [Tooltip("% reduce poison damage")]
-    [Range(0,90)]
+    [Range(0, 90)]
+
     public float resistPoisonPercent = 10;
     [Range(0, 1)]
     public float poisonSlowSpeed = 0.3f;
-    //public int timePoison = 5;
+
     [ReadOnly] public float damagePoisonPerSecond;
 
     [Header("Shocking Option")]
-	public bool canBeShock = true;
-	public float timeShocking = 2f;
-	float damageShockingPerFrame;
+    public bool canBeShock = true;
+    public float timeShocking = 2f;
 
-    
+    float damageShockingPerFrame;
+
+
 
     [Header("Behavier")]
-	public ATTACKTYPE attackType;
-	[HideInInspector] public STARTBEHAVIOR startBehavior = STARTBEHAVIOR.WALK_LEFT;
+    public ATTACKTYPE attackType;
+    [HideInInspector] public STARTBEHAVIOR startBehavior = STARTBEHAVIOR.WALK_LEFT;
     [HideInInspector] public DIEBEHAVIOR dieBehavior = DIEBEHAVIOR.NORMAL;
     [HideInInspector] public HITBEHAVIOR hitBehavior = HITBEHAVIOR.NONE;
-	public float spawnDelay = 1;
+    public float spawnDelay = 1;
 
     [Header("Sound")]
-    [Range(0,1)]
+    [Range(0, 1)]
     public float soundHitVol = 0.5f;
-	public AudioClip[] soundHit;
+    public AudioClip[] soundHit;
     [Range(0, 1)]
     public float soundDieVol = 0.5f;
     public AudioClip[] soundDie;
@@ -147,31 +166,33 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
     public float soundSpawnVol = 0.5f;
     public AudioClip[] soundSpawn;
 
-	int currentHealth;
-	Vector2 hitPos;
-	Vector2 knockBackForce;
-	public bool isPlaying{ get; set; }
-	public bool isStopping { get; set; }
+    private int currentHealth;
+    private Vector2 hitPos;
+    private Vector2 knockBackForce;
+    public bool isPlaying { get; set; }
+    public bool isStopping { get; set; }
     [ReadOnly] public bool isStunning = false;
 
     protected HealthBarEnemyNew healthBar;
-	protected Animator anim;
-	protected float moveSpeed;
+    protected Animator anim;
+    protected float moveSpeed;
     [ReadOnlyAttribute] public CheckTargetHelper checkTarget;
     [ReadOnly] public bool isPlayerDetected;
     [HideInInspector] public float delayChasePlayerWhenDetect = 1;
 
-    public bool isFacingRight(){
+    public bool isFacingRight()
+    {
         return transform.rotation.eulerAngles.y == 180 ? true : false;
     }
 
-	protected virtual void OnEnable(){
-		if (GameManager.Instance)
-			GameManager.Instance.AddListener (this);
+    protected virtual void OnEnable()
+    {
+        if (GameManager.Instance)
+            GameManager.Instance.AddListener(this);
 
-		isPlaying = true;
-		GetComponent<Animator>().runtimeAnimatorController = animOverrideController;
-	}
+        isPlaying = true;
+        GetComponent<Animator>().runtimeAnimatorController = animOverrideController;
+    }
 
 
     public virtual void Start()
@@ -210,54 +231,68 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
         }
     }
 
-	void FinishSpawning(){
-		if (enemyState == ENEMYSTATE.SPAWNING && isPlaying)
-			SetEnemyState (ENEMYSTATE.WALK);
-	}
+    void FinishSpawning()
+    {
+        if (enemyState == ENEMYSTATE.SPAWNING && isPlaying)
+        {
+            SetEnemyState(ENEMYSTATE.WALK);
+        }
+    }
 
-	public void AnimSetTrigger(string name){
-		anim.SetTrigger (name);
-	}
+    public void AnimSetTrigger(string name)
+    {
+        anim.SetTrigger(name);
+    }
 
-	public void AnimSetBool(string name, bool value){
-		anim.SetBool (name, value);
-	}
+    public void AnimSetBool(string name, bool value)
+    {
+        anim.SetBool(name, value);
+    }
 
-	public void AnimSetFloat(string name, float value){
-		anim.SetFloat (name, value);
-	}
+    public void AnimSetFloat(string name, float value)
+    {
+        anim.SetFloat(name, value);
+    }
 
-	public void SetEnemyState(ENEMYSTATE state){
-		enemyState = state;
-	}
+    public void SetEnemyState(ENEMYSTATE state)
+    {
+        enemyState = state;
+    }
 
-	public void SetEnemyEffect(ENEMYEFFECT effect){
-		enemyEffect = effect;
-	}
+    public void SetEnemyEffect(ENEMYEFFECT effect)
+    {
+        enemyEffect = effect;
+    }
 
-	public virtual void Update(){
+    public virtual void Update()
+    {
 
-        //Debug.LogError(enemyState);
-		if (enemyEffect == ENEMYEFFECT.BURNING)
-			CheckDamagePerFrame (damageBurningPerFrame);
+        if (enemyEffect == ENEMYEFFECT.BURNING)
+        {
+            CheckDamagePerFrame(damageBurningPerFrame);
+        }
 
-		if (enemyEffect == ENEMYEFFECT.SHOKING)
-			CheckDamagePerFrame (damageShockingPerFrame);
-		
-		healthBar.transform.localScale = new Vector2 (transform.localScale.x > 0 ? Mathf.Abs (healthBar.transform.localScale.x) : -Mathf.Abs (healthBar.transform.localScale.x), healthBar.transform.localScale.y);
-	}
+        if (enemyEffect == ENEMYEFFECT.SHOKING)
+        {
+            CheckDamagePerFrame(damageShockingPerFrame);
+        }
+
+        healthBar.transform.localScale = new Vector2(transform.localScale.x > 0 ? Mathf.Abs(healthBar.transform.localScale.x) : -Mathf.Abs(healthBar.transform.localScale.x), healthBar.transform.localScale.y);
+    }
+
+    public virtual void DetectPlayer(float delayChase = 0)
+    {
+        if (isPlayerDetected)
+        {
+            return;
+        }
+
+        StartCoroutine(DelayBeforeChasePlayer(delayChase));
+    }
 
 
-	//can call by Alarm action of other Enemy
-	public virtual void DetectPlayer(float delayChase = 0){
-		if (isPlayerDetected)
-			return;
-		
-		StartCoroutine (DelayBeforeChasePlayer (delayChase));
-	}
-
-
-	protected IEnumerator DelayBeforeChasePlayer(float delay){
+    protected IEnumerator DelayBeforeChasePlayer(float delay)
+    {
         yield return null;
         while (isStopping || isStunning) { yield return null; }
         isPlayerDetected = true;
@@ -267,226 +302,275 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
             SetEnemyState(ENEMYSTATE.IDLE);
             yield return new WaitForSeconds(delay);
         }
-        
+
         if (enemyState == ENEMYSTATE.ATTACK)
         {
             yield break;
         }
 
-		SetEnemyState (ENEMYSTATE.WALK);
+        SetEnemyState(ENEMYSTATE.WALK);
     }
 
-	public virtual void FixedUpdate(){
-
-	}
-
-	public virtual void Hit(Vector2 force = default(Vector2), bool pushBack = false, bool knockDownRagdoll = false, bool shock = false)
+    public virtual void FixedUpdate()
     {
-		SoundManager.PlaySfx (soundHit, soundHitVol);
-		switch (hitBehavior) {
-		case HITBEHAVIOR.CANKNOCKBACK:
-			KnockBack (knockBackForce);
-			break;
-		case HITBEHAVIOR.NONE:
 
-			break;
-		default:
-			break;
-		}
-	}
-
-	public virtual void KnockBack(Vector2 force, float stunningTime = 0){
-		
-	}
-
-    public virtual void Die(){
-		isPlaying = false;
-		GameManager.Instance.RemoveListener (this);
-		isPlayerDetected = false;
-		SetEnemyState (ENEMYSTATE.DEATH);
-
-		if (dieFX)
-			Instantiate (dieFX, transform.position, dieFX.transform.rotation);
-
-		if (enemyEffect == ENEMYEFFECT.FREEZE && dieFrozenFX)
-			SpawnSystemHelper.GetNextObject (dieFrozenFX, true).transform.position = hitPos;
-
-		if (enemyEffect == ENEMYEFFECT.SHOKING)
-			UnShock ();
-
-		if (enemyEffect == ENEMYEFFECT.EXPLOSION) {
-			if (bloodPuddleFX) {
-				for (int i = 0; i < Random.Range (2, 5); i++) {
-					SpawnSystemHelper.GetNextObject (bloodPuddleFX, true).transform.position = 
-						(Vector2)transform.position + new Vector2 (Random.Range (-(randomBloodPuddlePoint.x * 2), randomBloodPuddlePoint.x * 2), Random.Range (-(2 * randomBloodPuddlePoint.y), 2 * randomBloodPuddlePoint.y));
-				}
-			}
-			if (explosionFX.Length>0) {
-				for (int i = 0; i < Random.Range (1, 3); i++) {
-					var obj = SpawnSystemHelper.GetNextObject (explosionFX[Random.Range(0,explosionFX.Length)], false);
-					obj.transform.position = transform.position;
-					obj.SetActive (true);
-				}
-			}
-
-			SoundManager.PlaySfx (soundDieBlow, soundDieBlowVol);
-		} else
-			SoundManager.PlaySfx (soundDie, soundDieVol);
-
-        if (_bodyPart == BODYPART.HEAD)
-            GameManager.Instance.Point += killHeadShoot;
-        else
-            GameManager.Instance.Point += killPoint;
     }
 
-	private void CheckDamagePerFrame(float _damage){
-		if (enemyState == ENEMYSTATE.DEATH)
-			return;
+    public virtual void Hit(Vector2 force = default(Vector2), bool pushBack = false, bool knockDownRagdoll = false, bool shock = false)
+    {
+        SoundManager.PlaySfx(soundHit, soundHitVol);
+        switch (hitBehavior)
+        {
+            case HITBEHAVIOR.CANKNOCKBACK:
+                KnockBack(knockBackForce);
+                break;
+            case HITBEHAVIOR.NONE:
 
-		currentHealth -= (int) _damage;
-		if (healthBar)
-			healthBar.UpdateValue (currentHealth / (float) health);
-		
-		if (currentHealth <= 0)
-			Die ();
-	}
+                break;
+            default:
+                break;
+        }
+    }
 
-	#region IListener implementation
+    public virtual void KnockBack(Vector2 force, float stunningTime = 0)
+    {
 
-	public virtual void IPlay ()
-	{
-	}
+    }
 
-	public virtual void ISuccess ()
-	{
-	}
+    public virtual void Die()
+    {
+        isPlaying = false;
+        GameManager.Instance.RemoveListener(this);
+        isPlayerDetected = false;
+        SetEnemyState(ENEMYSTATE.DEATH);
 
-	public virtual void IPause ()
-	{
-	}
+        if (dieFX)
+            Instantiate(dieFX, transform.position, dieFX.transform.rotation);
 
-	public virtual void IUnPause ()
-	{
-	}
+        if (enemyEffect == ENEMYEFFECT.FREEZE && dieFrozenFX)
+            SpawnSystemHelper.GetNextObject(dieFrozenFX, true).transform.position = hitPos;
+
+        if (enemyEffect == ENEMYEFFECT.SHOKING)
+            UnShock();
+
+        if (enemyEffect == ENEMYEFFECT.EXPLOSION)
+        {
+            if (bloodPuddleFX)
+            {
+                for (int i = 0; i < Random.Range(2, 5); i++)
+                {
+                    SpawnSystemHelper.GetNextObject(bloodPuddleFX, true).transform.position =
+                        (Vector2)transform.position + new Vector2(Random.Range(-(randomBloodPuddlePoint.x * 2), randomBloodPuddlePoint.x * 2), Random.Range(-(2 * randomBloodPuddlePoint.y), 2 * randomBloodPuddlePoint.y));
+                }
+            }
+            if (explosionFX.Length > 0)
+            {
+                for (int i = 0; i < Random.Range(1, 3); i++)
+                {
+                    var obj = SpawnSystemHelper.GetNextObject(explosionFX[Random.Range(0, explosionFX.Length)], false);
+                    obj.transform.position = transform.position;
+                    obj.SetActive(true);
+                }
+            }
+
+            SoundManager.PlaySfx(soundDieBlow, soundDieBlowVol);
+        }
+        else
+        {
+            SoundManager.PlaySfx(soundDie, soundDieVol);
+        }
+        if (_bodyPart == BODYPART.HEAD)
+        {
+            GameManager.Instance.Point += killHeadShoot;
+        }
+        else
+        {
+
+            GameManager.Instance.Point += killPoint;
+        }
+    }
+
+    private void CheckDamagePerFrame(float _damage)
+    {
+        if (enemyState == ENEMYSTATE.DEATH)
+        {
+            return;
+        }
+
+        currentHealth -= (int)_damage;
+        if (healthBar)
+        {
+            healthBar.UpdateValue(currentHealth / (float)health);
+        }
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    #region IListener implementation
+
+    public virtual void IPlay()
+    {
+
+    }
+
+    public virtual void ISuccess()
+    {
+
+    }
+
+    public virtual void IPause()
+    {
+
+    }
+
+    public virtual void IUnPause()
+    {
+
+    }
+
+
+    public virtual void IOnRespawn()
+    {
+
+    }
+
+    public virtual void IOnStopMovingOn()
+    {
+
+    }
+
+    public virtual void IOnStopMovingOff()
+    {
+
+    }
 
     public virtual void IGameOver()
     {
         if (!isPlaying)
+        {
             return;
+        }
 
         isPlaying = false;
         SetEnemyState(ENEMYSTATE.IDLE);
     }
+    #endregion
 
-	public virtual void IOnRespawn ()
-	{
-	}
+    #region ICanFreeze implementation
+    public virtual void Freeze(float time, GameObject instigator)
+    {
+        if (enemyEffect == ENEMYEFFECT.FREEZE)
+        {
+            return;
+        }
 
-	public virtual void IOnStopMovingOn ()
-	{
-	}
+        if (enemyEffect == ENEMYEFFECT.BURNING)
+        {
+            BurnOut();
+        }
 
-	public virtual void IOnStopMovingOff ()
-	{
-	}
+        if (enemyEffect == ENEMYEFFECT.SHOKING)
+        {
+            UnShock();
+        }
 
-	#endregion
+        if (canBeFreeze)
+        {
+            enemyEffect = ENEMYEFFECT.FREEZE;
+            StartCoroutine(UnFreezeCo(time));
+        }
+    }
 
-	#region ICanFreeze implementation
-//	_2dxFX_Frozen[] iceFX;
-	public virtual void Freeze (float time, GameObject instigator)
-	{
-		if (enemyEffect == ENEMYEFFECT.FREEZE)
-			return;
-
-		if (enemyEffect == ENEMYEFFECT.BURNING)
-			BurnOut ();
-
-		if (enemyEffect == ENEMYEFFECT.SHOKING) {
-			UnShock ();
-		}
-
-		if (canBeFreeze) {
-			enemyEffect = ENEMYEFFECT.FREEZE;
-			StartCoroutine (UnFreezeCo (time));
-		}
-	}
-
-	IEnumerator UnFreezeCo(float time)
+    IEnumerator UnFreezeCo(float time)
     {
         AnimSetBool("isFreezing", true);
 
         if (enemyEffect != ENEMYEFFECT.FREEZE)
-			yield break;
-        
-		yield return new WaitForSeconds(time);
-		UnFreeze ();
-	}
+            yield break;
 
-	void UnFreeze(){
-		if (enemyEffect != ENEMYEFFECT.FREEZE)
-			return;
-		
-		enemyEffect = ENEMYEFFECT.NONE;
+        yield return new WaitForSeconds(time);
+        UnFreeze();
+    }
+
+    void UnFreeze()
+    {
+        if (enemyEffect != ENEMYEFFECT.FREEZE)
+            return;
+
+        enemyEffect = ENEMYEFFECT.NONE;
         AnimSetBool("isFreezing", false);
     }
 
-	#endregion
-    
-	#region ICanBurn implementation
-	public virtual void Burning (float damage, GameObject instigator)
-	{
-		if (enemyEffect == ENEMYEFFECT.BURNING)
-			return;
+    #endregion
 
-		if (enemyEffect == ENEMYEFFECT.FREEZE) {
-			UnFreeze ();
-		}
+    #region ICanBurn implementation
+    public virtual void Burning(float damage, GameObject instigator)
+    {
+        if (enemyEffect == ENEMYEFFECT.BURNING)
+        {
+            return;
+        }
 
-		if (enemyEffect == ENEMYEFFECT.SHOKING) {
-			UnShock ();
-		}
-		
-		if (canBeBurn) {
-			damageBurningPerFrame = damage;
-			enemyEffect = ENEMYEFFECT.BURNING;
+        if (enemyEffect == ENEMYEFFECT.FREEZE)
+        {
+            UnFreeze();
+        }
 
-			StartCoroutine (BurnOutCo (1));
-		}
-	}
+        if (enemyEffect == ENEMYEFFECT.SHOKING)
+        {
+            UnShock();
+        }
 
-	IEnumerator BurnOutCo(float time){
-		if (enemyEffect != ENEMYEFFECT.BURNING)
-			yield break;
-		
-		//float wait = timeBurn - 1;
-		yield return new WaitForSeconds(time);
-        
+        if (canBeBurn)
+        {
+            damageBurningPerFrame = damage;
+            enemyEffect = ENEMYEFFECT.BURNING;
 
-		if (enemyState == ENEMYSTATE.DEATH) {
-			BurnOut ();
-			gameObject.SetActive(false);
-		}
+            StartCoroutine(BurnOutCo(1));
+        }
+    }
 
-		BurnOut ();
-	}
+    IEnumerator BurnOutCo(float time)
+    {
+        if (enemyEffect != ENEMYEFFECT.BURNING)
+            yield break;
 
-	void BurnOut(){
-		if (enemyEffect != ENEMYEFFECT.BURNING)
-			return;
-		
-		enemyEffect = ENEMYEFFECT.NONE;
-	}
+        //float wait = timeBurn - 1;
+        yield return new WaitForSeconds(time);
+
+
+        if (enemyState == ENEMYSTATE.DEATH)
+        {
+            BurnOut();
+            gameObject.SetActive(false);
+        }
+
+        BurnOut();
+    }
+
+    void BurnOut()
+    {
+        if (enemyEffect != ENEMYEFFECT.BURNING)
+            return;
+
+        enemyEffect = ENEMYEFFECT.NONE;
+    }
     #endregion
 
     #region ICanPoison implementation
     public virtual void Poison(float damage, float time, GameObject instigator)
     {
         if (enemyEffect == ENEMYEFFECT.BURNING)
+        {
             return;
+        }
 
         if (enemyEffect == ENEMYEFFECT.POISON)
+        {
             return;
+        }
 
         if (enemyEffect == ENEMYEFFECT.FREEZE)
         {
@@ -512,18 +596,21 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
         AnimSetBool("isPoisoning", true);
         multipleSpeed = 1 - poisonSlowSpeed;
         if (enemyEffect != ENEMYEFFECT.POISON)
+        {
             yield break;
+        }
 
-        int wait = (int) time;
+        int wait = (int)time;
 
         while (wait > 0)
         {
             yield return new WaitForSeconds(1);
-            //Debug.LogError(damagePoisonPerSecond);
             int _damage = (int)(damagePoisonPerSecond * Random.Range(90 - resistPoisonPercent, 100f - resistPoisonPercent) * 0.01f);
             currentHealth -= _damage;
             if (healthBar)
+            {
                 healthBar.UpdateValue(currentHealth / (float)health);
+            }
 
             FloatingTextManager.Instance.ShowText("" + _damage, healthBarOffset, Color.red, transform.position);
 
@@ -550,7 +637,9 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
     void PoisonEnd()
     {
         if (enemyEffect != ENEMYEFFECT.POISON)
+        {
             return;
+        }
 
         AnimSetBool("isPoisoning", false);
         multipleSpeed = 1;
@@ -561,41 +650,48 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
 
     #region ICanShock implementation
 
-    //	protected _2dxFX_Lightning[] shockFX;
-    public virtual void Shoking (float damage, GameObject instigator)
-	{
-		if (enemyEffect == ENEMYEFFECT.SHOKING)
-			return;
-		
-		if (enemyEffect == ENEMYEFFECT.FREEZE) {
-			UnFreeze ();
-		}
+    public virtual void Shoking(float damage, GameObject instigator)
+    {
+        if (enemyEffect == ENEMYEFFECT.SHOKING)
+            return;
 
-		if (enemyEffect == ENEMYEFFECT.BURNING)
-			BurnOut ();
+        if (enemyEffect == ENEMYEFFECT.FREEZE)
+        {
+            UnFreeze();
+        }
 
-		if (canBeShock) {
-			damageShockingPerFrame = damage;
-			enemyEffect = ENEMYEFFECT.SHOKING;
-			StartCoroutine (UnShockCo ());
-		}
-	}
+        if (enemyEffect == ENEMYEFFECT.BURNING)
+            BurnOut();
 
-    IEnumerator UnShockCo(){
-		if (enemyEffect != ENEMYEFFECT.SHOKING)
-			yield break;
+        if (canBeShock)
+        {
+            damageShockingPerFrame = damage;
+            enemyEffect = ENEMYEFFECT.SHOKING;
+            StartCoroutine(UnShockCo());
+        }
+    }
 
-		yield return new WaitForSeconds (timeShocking);
+    IEnumerator UnShockCo()
+    {
+        if (enemyEffect != ENEMYEFFECT.SHOKING)
+        {
+            yield break;
+        }
 
-		UnShock ();
-	}
+        yield return new WaitForSeconds(timeShocking);
 
-	void UnShock(){
-		if (enemyEffect != ENEMYEFFECT.SHOKING)
-			return;
-		
-		enemyEffect = ENEMYEFFECT.NONE;
-	}
+        UnShock();
+    }
+
+    void UnShock()
+    {
+        if (enemyEffect != ENEMYEFFECT.SHOKING)
+        {
+            return;
+        }
+
+        enemyEffect = ENEMYEFFECT.NONE;
+    }
     #endregion
 
     #region Stun
@@ -622,16 +718,19 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
     public void TakeDamage(float damage, Vector2 force, Vector2 hitPoint, GameObject instigator, BODYPART bodyPart = BODYPART.NONE, WeaponEffect weaponEffect = null)
     {
         if (enemyState == ENEMYSTATE.DEATH)
+        {
             return;
+        }
 
         if (isStopping)
+        {
             return;
+        }
 
-        
 
-        
 
-        //store parameters
+
+
         _bodyPart = bodyPart;
         _bodyPartForce = force;
         _damage = damage;
@@ -641,21 +740,23 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
         currentHealth -= (int)damage;
         FloatingTextManager.Instance.ShowText("" + damage, healthBarOffset, Color.yellow, transform.position);
 
-        //if (_bodyPart == BODYPART.HEAD)
-        //    FloatingTextManager.Instance.ShowText("HEAD SHOT", healthBarOffset, Color.black, transform.position, 24);
-
         knockBackForce = force;
         if (hitFX)
+        {
             SpawnSystemHelper.GetNextObject(hitFX, true).transform.position =
                 hitPos + new Vector2(Random.Range(-randomHitPoint.x, randomHitPoint.x), Random.Range(-randomHitPoint.y, randomHitPoint.y));
+        }
         if (bloodPuddleFX)
+        {
             SpawnSystemHelper.GetNextObject(bloodPuddleFX, true).transform.position =
                 (Vector2)transform.position + new Vector2(Random.Range(-randomBloodPuddlePoint.x, randomBloodPuddlePoint.x), Random.Range(-randomBloodPuddlePoint.y, randomBloodPuddlePoint.y));
+        }
 
 
         if (healthBar)
+        {
             healthBar.UpdateValue(currentHealth / (float)health);
-        //		Debug.LogError (isExplosion + "BLOW" + (dieBehavior == DIEBEHAVIOR.BLOWUP));
+        }
         if (currentHealth <= 0)
         {
             if (isExplosion || dieBehavior == DIEBEHAVIOR.BLOWUP)

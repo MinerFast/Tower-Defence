@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour, IListener
 {
     public static MenuManager Instance;
-    public GameObject Shoot;
+
+    public GameObject shoot;
     public GameObject StartUI;
     public GameObject UI;
     public GameObject VictotyUI;
@@ -23,11 +24,12 @@ public class MenuManager : MonoBehaviour, IListener
 
     UI_UI uiControl;
 
+    #region MonoBehaviour
     private void Awake()
     {
         Instance = this;
 
-        Shoot.SetActive(false);
+        shoot.SetActive(false);
         StartUI.SetActive(false);
         UI.SetActive(false);
         VictotyUI.SetActive(false);
@@ -35,30 +37,36 @@ public class MenuManager : MonoBehaviour, IListener
         PauseUI.SetActive(false);
         LoadingUI.SetActive(false);
 
-        uiControl = gameObject.GetComponentInChildren<UI_UI>(true);
-
-       
+        uiControl = gameObject.GetComponentInChildren<UI_UI>(true);  
     }
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
+    #endregion
 
     IEnumerator Start()
     {
         soundImage.sprite = GlobalValue.isSound ? soundImageOn : soundImageOff;
         musicImage.sprite = GlobalValue.isMusic ? musicImageOn : musicImageOff;
         if (!GlobalValue.isSound)
+        {
             SoundManager.SoundVolume = 0;
+        }
         if (!GlobalValue.isMusic)
+        {
             SoundManager.MusicVolume = 0;
+        }
 
         StartUI.SetActive(true);
 
         yield return new WaitForSeconds(1);
-        Shoot.SetActive(true);
+
+        shoot.SetActive(true);
         StartUI.SetActive(false);
         UI.SetActive(true);
 
         GameManager.Instance.StartGame();
-
-        
     }
 
     public void UpdateHealthbar(float currentHealth, float maxHealth)
@@ -70,15 +78,10 @@ public class MenuManager : MonoBehaviour, IListener
     {
         uiControl.UpdateEnemyWavePercent(currentSpawn, maxValue);
     }
-
-    void Update()
-    {
-        
-    }
-
     public void Pause()
     {
         SoundManager.PlaySfx(SoundManager.Instance.soundPause);
+
         if (Time.timeScale == 1)
         {
             Time.timeScale = 0;
@@ -92,7 +95,7 @@ public class MenuManager : MonoBehaviour, IListener
             PauseUI.SetActive(false);
         }
     }
-
+    #region Interface
     public void IPlay()
     {
        
@@ -103,16 +106,6 @@ public class MenuManager : MonoBehaviour, IListener
         StartCoroutine(VictoryCo());
     }
 
-    IEnumerator VictoryCo()
-    {
-        Shoot.SetActive(false);
-        UI.SetActive(false);
-
-        yield return new WaitForSeconds(1.5f);
-        VictotyUI.SetActive(true);
-    }
-
-
     public void IPause()
     {
       
@@ -122,21 +115,6 @@ public class MenuManager : MonoBehaviour, IListener
     {
         
     }
-
-    public void IGameOver()
-    {
-        StartCoroutine(GameOverCo());
-    }
-
-    IEnumerator GameOverCo()
-    {
-        Shoot.SetActive(false);
-        UI.SetActive(false);
-
-        yield return new WaitForSeconds(1.5f);
-        FailUI.SetActive(true);
-    }
-
     public void IOnRespawn()
     {
         
@@ -151,9 +129,34 @@ public class MenuManager : MonoBehaviour, IListener
     {
        
     }
+    #endregion
+    IEnumerator VictoryCo()
+    {
+        shoot.SetActive(false);
+        UI.SetActive(false);
+
+        yield return new WaitForSeconds(1.5f);
+        VictotyUI.SetActive(true);
+    }
+
+
+
+    public void IGameOver()
+    {
+        StartCoroutine(GameOverCo());
+    }
+
+    IEnumerator GameOverCo()
+    {
+        shoot.SetActive(false);
+        UI.SetActive(false);
+
+        yield return new WaitForSeconds(1.5f);
+        FailUI.SetActive(true);
+    }
+
 
     
-    #region Music and Sound
     public void TurnSound()
     {
         GlobalValue.isSound = !GlobalValue.isSound;
@@ -169,9 +172,7 @@ public class MenuManager : MonoBehaviour, IListener
 
         SoundManager.MusicVolume = GlobalValue.isMusic ? SoundManager.Instance.musicsGameVolume : 0;
     }
-    #endregion
 
-    #region Load Scene
     public void LoadHomeMenuScene()
     {
         SoundManager.Click();
@@ -205,14 +206,7 @@ public class MenuManager : MonoBehaviour, IListener
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             slider.value = progress;
             progressText.text = (int)progress * 100f + "%";
-            //			Debug.LogError (progress);
             yield return null;
         }
-    }
-    #endregion
-
-    private void OnDisable()
-    {
-        Time.timeScale = 1;
     }
 }

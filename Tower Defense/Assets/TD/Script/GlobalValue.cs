@@ -11,6 +11,10 @@ public class GlobalValue : MonoBehaviour {
 	public static bool isSound = true;
 	public static bool isMusic = true;
 
+	public static bool RemoveAds { 
+		get { return PlayerPrefs.GetInt ("RemoveAds", 0) == 1 ? true : false; } 
+		set { PlayerPrefs.SetInt ("RemoveAds", value ? 1 : 0); } 
+	}
     public static bool isNewGame
     {
         get { return PlayerPrefs.GetInt("isNewGame", 0) == 0; }
@@ -54,10 +58,6 @@ public class GlobalValue : MonoBehaviour {
 		return PlayerPrefs.GetInt ("LevelStars" + level, 0); 
 	}
 
-	public static bool RemoveAds { 
-		get { return PlayerPrefs.GetInt ("RemoveAds", 0) == 1 ? true : false; } 
-		set { PlayerPrefs.SetInt ("RemoveAds", value ? 1 : 0); } 
-	}
 
     public static int ItemDoubleArrow
     {
@@ -89,11 +89,6 @@ public class GlobalValue : MonoBehaviour {
         set { PlayerPrefs.SetInt("UpgradeLongShoot", value); }
     }
 
-    public static float LongShootExtra
-    {
-        get { return PlayerPrefs.GetFloat("LongShootExtra", 0); }
-        set { PlayerPrefs.SetFloat("LongShootExtra", value); }
-    }
 
     public static int UpgradeArcher
     {
@@ -105,6 +100,11 @@ public class GlobalValue : MonoBehaviour {
     {
         get { return PlayerPrefs.GetInt("UpgradeStrongWall", 0); }
         set { PlayerPrefs.SetInt("UpgradeStrongWall", value); }
+    }
+    public static float LongShootExtra
+    {
+        get { return PlayerPrefs.GetFloat("LongShootExtra", 0); }
+        set { PlayerPrefs.SetFloat("LongShootExtra", value); }
     }
     public static float StrongWallExtra
     {

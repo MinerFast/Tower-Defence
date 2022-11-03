@@ -12,6 +12,7 @@ public class BezierCollider2D : MonoBehaviour
 
     public int pointsQuantity;
 
+    #region Vectors
     Vector3 CalculateBezierPoint(float t, Vector3 p0, Vector3 handlerP0, Vector3 handlerP1, Vector3 p1)
     {
         float u = 1.0f - t;
@@ -20,10 +21,10 @@ public class BezierCollider2D : MonoBehaviour
         float uuu = uu * u;
         float ttt = tt * t;
 
-        Vector3 p = uuu * p0; //first term
-        p += 3f * uu * t * handlerP0; //second term
-        p += 3f * u * tt * handlerP1; //third term
-        p += ttt * p1; //fourth term
+        Vector3 p = uuu * p0; 
+        p += 3f * uu * t * handlerP0;
+        p += 3f * u * tt * handlerP1;
+        p += ttt * p1; 
 
         return p;
     }
@@ -41,5 +42,5 @@ public class BezierCollider2D : MonoBehaviour
 
         return points.ToArray();
     }
-
+    #endregion
 }

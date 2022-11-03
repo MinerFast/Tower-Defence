@@ -15,13 +15,19 @@ public class CharacterBodyPart : MonoBehaviour, ICanTakeDamageBodyPart
     public bool allowKnockDown = false;
     public bool allowShock = false;
 
-    Enemy ownerDamage;
+    private Enemy ownerDamage;
 
-    public void TakeDamage(float damage, Vector2 force, Vector2 hitPosition, GameObject instigator, WeaponEffect weaponEffect = null, float pushBackPercent = 0, float knockDownRagdollPercent = 0, float shockPercent = 0)
+    void Awake()
     {
-        damage *= multipleDamageX;
+        ownerDamage = owner.GetComponent<Enemy>();
+        if (ownerHitFX)
+            ownerHitFX.SetActive(false);
+    }
+    public void TakeDamage(float damageCount, Vector2 forceCount, Vector2 hitPosition, GameObject instigator, WeaponEffect weaponEffect = null, float pushBackPercent = 0, float knockDownRagdollPercent = 0, float shockPercent = 0)
+    {
+        damageCount *= multipleDamageX;
 
-        ownerDamage.TakeDamage(damage, hitPosition, force, instigator, _bodyPart, weaponEffect);
+        ownerDamage.TakeDamage(damageCount, hitPosition, forceCount, instigator, _bodyPart, weaponEffect);
 
         if (hitFX)
         {
@@ -36,28 +42,6 @@ public class CharacterBodyPart : MonoBehaviour, ICanTakeDamageBodyPart
         
     }
 
-    bool canDoAction(float percent)
-    {
-        if (percent == 0)
-            return false;
+   
 
-        if (Random.Range(0f, 1f) < percent)
-            return true;
-        else
-            return false;
-    }
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        ownerDamage = owner.GetComponent<Enemy>();
-        if (ownerHitFX)
-            ownerHitFX.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

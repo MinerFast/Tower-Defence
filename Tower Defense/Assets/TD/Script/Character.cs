@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Character : MonoBehaviour, IListener, ICanTakeDamage
 {
-    
+    #region MonoBehaviour
     public virtual void Start()
     {
     }
 
-   
+
     public virtual void Update()
     {
     }
@@ -17,16 +17,17 @@ public class Character : MonoBehaviour, IListener, ICanTakeDamage
     public virtual void LateUpdate()
     {
     }
+    #endregion
 
-    //ICanTakeDamage
+    #region Virtual
     public virtual void TakeDamage(float damage, Vector2 force, Vector2 hitPoint, GameObject instigator, BODYPART bodyPart = BODYPART.NONE, WeaponEffect weaponEffect = null) { }
 
-    public virtual void Hit() { }
     public virtual void Dead() { }
-    public virtual void GetFrezze() { }
     public virtual void GetPosion() { }
-
-    //IListener
+    public virtual void Hit() { }
+    public virtual void GetFrezze() { }
+    #endregion
+    #region Interface
     public virtual void IPlay()
     {
     }
@@ -58,4 +59,5 @@ public class Character : MonoBehaviour, IListener, ICanTakeDamage
     public virtual void IOnStopMovingOff()
     {
     }
+    #endregion
 }

@@ -24,7 +24,10 @@ public class AutoDisableParticleSystemHelper : MonoBehaviour
                     this.gameObject.SetActive(false);
                 }
                 else
-                    GameObject.Destroy(this.gameObject);
+                {
+
+                    Destroy(this.gameObject);
+                }
                 break;
             }
         }

@@ -3,21 +3,18 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuHomeScene : MonoBehaviour {
-	public static MainMenuHomeScene Instance;
-	public GameObject MapUI;
+public class MainMenuHomeScene : MonoBehaviour
+{
+
+    public static MainMenuHomeScene Instance;
+
+    public GameObject MapUI;
     public GameObject ShopUI;
-	public GameObject Loading;
-	//public GameObject RemoveAdBut;
-	//public GameObject NewgameBut;
-	//public GameObject ContinueBut;
-	//public GameObject ShopBut;
-	//public GameObject VideoBut;
-    //public GameObject StoryUI;
+    public GameObject Loading;
     public GameObject GetMoreCoin;
     public GameObject Settings;
-	//public ShopMenuPopupUI ShopUI;
-	public string facebookLink;
+
+    public string facebookLink;
     public string twitterLink = "https://twitter.com/";
 
     public Text[] coinTxt;
@@ -27,44 +24,49 @@ public class MainMenuHomeScene : MonoBehaviour {
     public Image musicImage;
     public Sprite soundImageOn, soundImageOff, musicImageOn, musicImageOff;
 
-    void Awake(){
-		Instance = this;
-		if (Loading != null)
-			Loading.SetActive (false);
-		if (MapUI != null)
-            MapUI.SetActive (false);
-        if (GetMoreCoin)
-            GetMoreCoin.SetActive(false);
-        if (Settings)
-            Settings.SetActive(false);
-        if (ShopUI)
-            ShopUI.SetActive(false);
-
-    }
-
-	public void LoadScene(string name){
-		if (Loading != null)
-			Loading.SetActive (true);
-
-        //SceneManager.LoadSceneAsync (name);
-        StartCoroutine(LoadAsynchronously(name));
-    }
-
-    public void OpenGetMoreCoin(bool open)
+    #region MonoBehaviour
+    void Awake()
     {
-        SoundManager.Instance.ClickBut();
-        GetMoreCoin.SetActive(open);
+        Instance = this;
+        if (Loading != null)
+        {
+            Loading.SetActive(false);
+        }
+
+        if (MapUI != null)
+        {
+            MapUI.SetActive(false);
+        }
+
+        if (GetMoreCoin)
+        {
+            GetMoreCoin.SetActive(false);
+        }
+
+        if (Settings)
+        {
+            Settings.SetActive(false);
+        }
+
+        if (ShopUI)
+        {
+            ShopUI.SetActive(false);
+        }
+
     }
+    void Update()
+    {
+        CheckSoundMusic();
 
-	// Use this for initialization
-	IEnumerator Start () {
-		//check game audio
-		CheckSoundMusic();
-        //		Music.color = GlobalValue.isMusic ? colorOn : colorOff;
-        //		Sound.color = GlobalValue.isSound ? colorOn : colorOff;
-
-        //NewgameBut.SetActive(PlayerPrefs.GetInt("isStarted", 0) == 0);
-        //NewgameBut.SetActive(GlobalValue.isNewGame);
+        foreach (var ct in coinTxt)
+        {
+            ct.text = GlobalValue.SavedCoins + "";
+        }
+    }
+    IEnumerator Start()
+    {
+        CheckSoundMusic();
+     
 
         if (GlobalValue.isFirstOpenMainMenu)
         {
@@ -76,44 +78,43 @@ public class MainMenuHomeScene : MonoBehaviour {
             SoundManager.PlayMusic(SoundManager.Instance.musicsGame);
         }
     }
+    #endregion
 
-    void Update() {
-        CheckSoundMusic();
+    public void LoadScene(string name)
+    {
+        if (Loading != null)
+            Loading.SetActive(true);
 
-        foreach (var ct in coinTxt)
-        {
-            ct.text = GlobalValue.SavedCoins + "";
-        }
-	}
+        StartCoroutine(LoadAsynchronously(name));
+    }
 
-	public void OpenMap(bool open){
+    #region OpenRegion
+    public void OpenGetMoreCoin(bool open)
+    {
+        SoundManager.Instance.ClickBut();
+        GetMoreCoin.SetActive(open);
+    }
+
+    public void OpenMap(bool open)
+    {
         SoundManager.Click();
         StartCoroutine(OpenMapCo(open));
-	}
+    }
 
     IEnumerator OpenMapCo(bool open)
     {
-        //if (GlobalValue.isFirstOpenMainMenu)
-        //{
-        //    TurnStoryUI(true);
-        //    while (StoryUI.activeInHierarchy) { yield return null; }
         yield return null;
-        //}
 
         BlackScreenUI.instance.Show(0.2f);
         MapUI.SetActive(open);
         BlackScreenUI.instance.Hide(0.2f);
     }
 
-    //public void TurnStoryUI(bool open)
-    //{
-    //    StoryUI.SetActive(open);
-    //}
-
-	public void Facebook(){
+    public void Facebook()
+    {
         SoundManager.Click();
-		Application.OpenURL (facebookLink);
-	}
+        Application.OpenURL(facebookLink);
+    }
 
     public void Twitter()
     {
@@ -132,8 +133,20 @@ public class MainMenuHomeScene : MonoBehaviour {
         SoundManager.Click();
         Settings.SetActive(open);
     }
+    public void OpenShop(bool open)
+    {
+        SoundManager.Click();
+        ShopUI.SetActive(open);
+    }
 
-    #region Music and Sound
+    public void Tutorial()
+    {
+        SoundManager.Click();
+        SceneManager.LoadScene("Tutorial");
+    }
+    #endregion
+
+    #region Music 
     public void TurnSound()
     {
         GlobalValue.isSound = !GlobalValue.isSound;
@@ -149,25 +162,16 @@ public class MainMenuHomeScene : MonoBehaviour {
 
         SoundManager.MusicVolume = GlobalValue.isMusic ? SoundManager.Instance.musicsGameVolume : 0;
     }
-    #endregion
-
-    private void CheckSoundMusic(){
+    private void CheckSoundMusic()
+    {
         soundImage.sprite = GlobalValue.isSound ? soundImageOn : soundImageOff;
         musicImage.sprite = GlobalValue.isMusic ? musicImageOn : musicImageOff;
         SoundManager.SoundVolume = GlobalValue.isSound ? 1 : 0;
         SoundManager.MusicVolume = GlobalValue.isMusic ? SoundManager.Instance.musicsGameVolume : 0;
     }
+    #endregion
 
-    public void OpenShop(bool open)
-    {
-        SoundManager.Click();
-        ShopUI.SetActive(open);
-    }
 
-    public void Tutorial(){
-		SoundManager.Click ();
-		SceneManager.LoadScene ("Tutorial");
-	}
 
     public Slider slider;
     public Text progressText;
@@ -179,7 +183,6 @@ public class MainMenuHomeScene : MonoBehaviour {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
             slider.value = progress;
             progressText.text = (int)progress * 100f + "%";
-            //			Debug.LogError (progress);
             yield return null;
         }
     }

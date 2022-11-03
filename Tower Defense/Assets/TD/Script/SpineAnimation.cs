@@ -7,20 +7,22 @@ using Spine;
 public class SpineAnimation : MonoBehaviour
 {
     public string animationName = "Fx3";
+
     public float disableTime = 1;
 
-    SkeletonAnimation skeleton;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        skeleton = GetComponent<SkeletonAnimation>();
-    }
+    private SkeletonAnimation skeleton;
 
+    #region MonoBehaviour
     private void OnEnable()
     {
         skeleton.state.SetAnimation(0, animationName, false);
         Invoke("DisableCo", disableTime);
     }
+    void Awake()
+    {
+        skeleton = GetComponent<SkeletonAnimation>();
+    }
+    #endregion
 
     private void DisableCo()
     {

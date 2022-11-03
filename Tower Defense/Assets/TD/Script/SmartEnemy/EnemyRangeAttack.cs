@@ -5,95 +5,122 @@ using Spine;
 using Spine.Unity;
 
 [AddComponentMenu("ADDP/Enemy AI/Range Attack")]
-public class EnemyRangeAttack : MonoBehaviour {
-	public LayerMask enemyLayer;
-	public Transform checkPoint;
-	[SpineBone]
-	public string targetBone = "hip";
+public class EnemyRangeAttack : MonoBehaviour
+{
+    public LayerMask enemyLayer;
+
+    public Transform checkPoint;
+
+    [SpineBone]
+    public string targetBone = "hip";
+
     public AudioClip soundShoot;
-    [Range(0,1)]
+
+    [Range(0, 1)]
     public float soundShootVolume = 0.5f;
 
     public Transform shootingPoint;
-	public float damage = 30;
-	public float detectDistance = 5;
-	public Projectile bullet;
-	[HideInInspector] public float shootingRate = 1;
+
+    public float damage = 30;
+    public float detectDistance = 5;
+
+    public Projectile bullet;
+
+    [HideInInspector] public float shootingRate = 1;
     [HideInInspector] public int multiShoot = 1;
     [HideInInspector] public float multiShootRate = 0.2f;
-	float lastShoot = 0;
-	[HideInInspector] public GameObject GunObj;
-	Vector3 dir = Vector3.right;
-	public bool isAttacking { get; set; }
 
-	Bone bone;
-	SkeletonMecanim skeletonAnimation;
+    float lastShoot = 0;
 
-	void Start(){
-		skeletonAnimation = GetComponent<SkeletonMecanim> ();
-		bone = skeletonAnimation.skeleton.FindBone(targetBone);
-	}
+    [HideInInspector] public GameObject GunObj;
 
-	public Vector3 firePosition(){
-			Vector3 _firePoint = bone.GetWorldPosition(skeletonAnimation.transform);
-			return _firePoint;
-	}
+    Vector3 dir = Vector3.right;
+    public bool isAttacking { get; set; }
 
-	public bool AllowAction(){
-		return Time.time - lastShoot > shootingRate;
-	}
-	
-	// Update is called once per frame
-	public bool CheckPlayer (bool isFacingRight) {
-			dir = isFacingRight ? Vector2.right : Vector2.left;
+    private Bone bone;
+    private SkeletonMecanim skeletonAnimation;
 
-        //Debug.LogError(dir);
-		
-		RaycastHit2D hit = Physics2D.Raycast (checkPoint.position, dir, detectDistance, enemyLayer);
-		if (hit)
-			return true;
-		else
-			return false;
-	}
+    public Vector3 firePosition()
+    {
+        Vector3 firePoint = bone.GetWorldPosition(skeletonAnimation.transform);
+        return firePoint;
+    }
+    #region MonoBehaviour
+    void Start()
+    {
+        skeletonAnimation = GetComponent<SkeletonMecanim>();
+        bone = skeletonAnimation.skeleton.FindBone(targetBone);
+    }
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawRay(checkPoint.position, dir * detectDistance);
+    }
+    #endregion
 
-	public void Action(){
-		isAttacking = true;
-		lastShoot = Time.time;
+    public bool AllowAction()
+    {
+        return Time.time - lastShoot > shootingRate;
+    }
 
-	}
+    public bool CheckPlayer(bool isFacingRight)
+    {
+        dir = isFacingRight ? Vector2.right : Vector2.left;
 
-	/// <summary>
-	/// called by Enemy
-	/// </summary>
-	public void Shoot(bool isFacingRight){
-		StartCoroutine (ShootCo (isFacingRight));
-	}
 
-	IEnumerator ShootCo(bool isFacingRight){
-		for (int i = 0; i < multiShoot; i++) {
+        RaycastHit2D hit = Physics2D.Raycast(checkPoint.position, dir, detectDistance, enemyLayer);
+        if (hit)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void Action()
+    {
+        isAttacking = true;
+        lastShoot = Time.time;
+    }
+
+    /// <summary>
+    /// called by Enemy
+    /// </summary>
+    public void Shoot(bool isFacingRight)
+    {
+        StartCoroutine(ShootCo(isFacingRight));
+    }
+
+    IEnumerator ShootCo(bool isFacingRight)
+    {
+        for (int i = 0; i < multiShoot; i++)
+        {
             SoundManager.PlaySfx(soundShoot, soundShootVolume);
 
-			float shootAngle = 0;
-			shootAngle = isFacingRight ? 0 : 180;
+            float shootAngle;
+            shootAngle = isFacingRight ? 0 : 180;
 
-			var projectile = SpawnSystemHelper.GetNextObject (bullet.gameObject, false).GetComponent<Projectile> ();
-			projectile.transform.position = shootingPoint != null ? shootingPoint.position : firePosition ();
-			projectile.transform.rotation = Quaternion.Euler (0, 0, shootAngle);
-			projectile.Initialize (gameObject, Vector2.right * (isFacingRight ? 1 : -1), Vector2.zero, false, damage, damage, 0);
-			projectile.gameObject.SetActive (true);
-			yield return new WaitForSeconds (multiShootRate);
-		}
+            var projectil = SpawnSystemHelper.GetNextObject(bullet.gameObject, false).GetComponent<Projectile>();
+            var magicCount = 1;
 
-		CancelInvoke ();
-		Invoke ("EndAttack", 1);
-	}
+            projectil.transform.position = shootingPoint != null ? shootingPoint.position : firePosition();
+            projectil.transform.rotation = Quaternion.Euler(0, 0, shootAngle);
+            projectil.Initialize(gameObject, Vector2.right * (isFacingRight ? magicCount : -magicCount), Vector2.zero, false, damage, damage, 0);
+            projectil.gameObject.SetActive(true);
 
-	void EndAttack(){
-		isAttacking = false;
-	}
+            yield return new WaitForSeconds(multiShootRate);
+        }
 
-	void OnDrawGizmosSelected(){
-		Gizmos.color = Color.white;
-		Gizmos.DrawRay (checkPoint.position, dir* detectDistance);
-	}
+        CancelInvoke();
+
+        Invoke("EndAttack", 1);
+    }
+
+    void EndAttack()
+    {
+        isAttacking = false;
+    }
+
 }
