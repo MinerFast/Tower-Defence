@@ -4,28 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 
-public class ShopItemReward : MonoBehaviour {
-    public string itemName = "ITEM NAME";
-	public enum ItemType{DoubleArrow, TripleArrow, Posion, Freeze}
-	public ItemType itemType;
+public class ShopItemReward : MonoBehaviour
+{
+    public string itemNameRus;
+    public string itemNameEng;
+    public string currentRus;
+    public string currentEng;
+    private string current;
+    public enum ItemType { DoubleArrow, TripleArrow, Posion, Freeze }
+    public ItemType itemType;
 
-	public int rewardedUnit = 1;
+    public int rewardedUnit = 1;
 
     public Text nameTxt;
-	public Text rewardedAmountTxt;
-	public Text currentAmountTxt;
-	//public AudioClip sound;
+    public Text rewardedAmountTxt;
+    public Text currentAmountTxt;
 
-	[ReadOnly] public int coinPrice = 1;
-	public Text coinTxt;
-	//public GameObject watchVideoBut;
-	//ShowOptions options;
+    [ReadOnly] public int coinPrice = 1;
+    public Text coinTxt;
 
-	void OnEnable(){
-		UpdateAmount ();
-	}
 
-	void Start(){
+    void OnEnable()
+    {
+        UpdateAmount();
+    }
+
+    void Start()
+    {
         if (GameMode.Instance)
         {
             switch (itemType)
@@ -47,16 +52,25 @@ public class ShopItemReward : MonoBehaviour {
             }
         }
 
-        UpdateAmount ();
+        UpdateAmount();
 
-		rewardedAmountTxt.text = "x" + rewardedUnit;
-		coinTxt.text = coinPrice.ToString ();
-        nameTxt.text = itemName;
-        //options = new ShowOptions { resultCallback = HandleShowResult2 };
+        rewardedAmountTxt.text = "x" + rewardedUnit;
+        coinTxt.text = coinPrice.ToString();
+        if (PlayerPrefs.GetString("Language") == "rus")
+        {
+            nameTxt.text = itemNameRus;
+            nameTxt.fontStyle = FontStyle.Bold;
+        }
+        else
+        {
+            nameTxt.text = itemNameEng;
+            nameTxt.fontStyle = FontStyle.Normal;
+        }
     }
 
-	public void UseCoin(){
-		var coins = GlobalValue.SavedCoins;
+    public void UseCoin()
+    {
+        var coins = GlobalValue.SavedCoins;
         if (coins >= coinPrice)
         {
             coins -= coinPrice;
@@ -70,42 +84,11 @@ public class ShopItemReward : MonoBehaviour {
             if (AdsManager.Instance && AdsManager.Instance.isRewardedAdReady())
                 NotEnoughCoins.Instance.ShowUp();
         }
-	}
+    }
 
-    //public void ShowRewardAd()
-    //{
-    //    if (Advertisement.IsReady("rewardedVideo"))
-    //    {
-    //        Advertisement.Show("rewardedVideo", options);
-    //    }
-    //    SoundManager.Click();
-    //}
-	
-	//private void ShowRewardedAd()
-	//{
 
-	//	if (Advertisement.IsReady ("rewardedVideo")) {
-	//		Advertisement.Show ("rewardedVideo", options);
-	//	}
-	//}
-
-	//private void HandleShowResult2(ShowResult result)
-	//{
-	//	switch (result) {
-	//	case ShowResult.Finished:
-	//		Debug.Log ("The ad was successfully shown.");
-	//		DoReward ();
-	//		break;
-	//	case ShowResult.Skipped:
-	//		Debug.Log ("The ad was skipped before reaching the end.");
-	//		break;
-	//	case ShowResult.Failed:
-	//		Debug.LogError ("The ad failed to be shown.");
-	//		break;
-	//	}
-	//}
-
-	private void DoReward(){
+    private void DoReward()
+    {
         switch (itemType)
         {
             case ItemType.DoubleArrow:
@@ -124,27 +107,37 @@ public class ShopItemReward : MonoBehaviour {
                 break;
         }
 
-		UpdateAmount ();
+        UpdateAmount();
         SoundManager.PlaySfx(SoundManager.Instance.soundPurchased);
-		//Debug.LogWarning ("ITEM: " + sound.name);
-		//SoundManager.PlaySfx (sound);
-	}
+
+    }
 
     private void UpdateAmount()
     {
+        if (PlayerPrefs.GetString("Language") == "rus")
+        {
+            current = currentRus;
+            currentAmountTxt.fontStyle = FontStyle.Bold;
+        }
+        else
+        {
+            current = currentEng;
+            currentAmountTxt.fontStyle = FontStyle.Normal;
+            //current: 
+        }
         switch (itemType)
         {
             case ItemType.DoubleArrow:
-                currentAmountTxt.text = "current: " + GlobalValue.ItemDoubleArrow;
+                currentAmountTxt.text = current + GlobalValue.ItemDoubleArrow;
                 break;
             case ItemType.TripleArrow:
-                currentAmountTxt.text = "current: " + GlobalValue.ItemTripleArrow;
+                currentAmountTxt.text = current + GlobalValue.ItemTripleArrow;
                 break;
             case ItemType.Posion:
-                currentAmountTxt.text = "current: " + GlobalValue.ItemPoison;
+                currentAmountTxt.text = current + GlobalValue.ItemPoison;
                 break;
             case ItemType.Freeze:
-                currentAmountTxt.text = "current: " + GlobalValue.ItemFreeze;
+                currentAmountTxt.text = current + GlobalValue.ItemFreeze;
                 break;
             default:
                 break;

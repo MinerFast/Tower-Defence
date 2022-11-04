@@ -20,7 +20,8 @@ public class Controller2D : RaycastController
     public bool inverseGravity = false;
 
     private bool isFacingRight;
-    //
+
+    [ReadOnly] public bool isWall;
     public override void Start()
     {
         base.Start();
@@ -72,7 +73,6 @@ public class Controller2D : RaycastController
         Move(velocityCount, Vector2.zero, standingFromPlatform);
     }
     #endregion
-    [ReadOnly] public bool isWall;
     #region Collision
     void HorizontalCollisions(ref Vector3 velocityCount)
     {
@@ -317,10 +317,7 @@ public class Controller2D : RaycastController
         }
     }
     #endregion
-    void ResetFallingThroughPlatform()
-    {
-        collisions.fallingThroughPlatform = false;
-    }
+
    
     public struct CollisionInfo
     {

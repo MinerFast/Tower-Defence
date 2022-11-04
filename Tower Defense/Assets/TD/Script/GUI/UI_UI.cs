@@ -11,6 +11,8 @@ public class UI_UI : MonoBehaviour
     public Text health;
     public Text pointTxt;
     public Text levelName;
+    public string levelNameRus;
+    public string levelNameEng;
 
 
     float healthValue, enemyWaveValue;
@@ -25,7 +27,16 @@ public class UI_UI : MonoBehaviour
 
         healthSlider.value = 1;
         enemyWavePercentSlider.value = 0;
-        levelName.text = "Level " + GlobalValue.levelPlaying;
+        if (PlayerPrefs.GetString("Language") == "rus")
+        {
+            levelName.text = levelNameRus + GlobalValue.levelPlaying;
+            levelName.fontStyle = FontStyle.Bold;
+        }
+        else
+        {
+            levelName.text = levelNameEng + GlobalValue.levelPlaying;
+            levelName.fontStyle = FontStyle.Normal;
+        }
     }
 
     private void Update()

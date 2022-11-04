@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class ShopItemUpgrade : MonoBehaviour
 {
-    public string itemName = "ITEM NAME";
-    public string infor = "information for item";
+    public string itemNameRus;
+    public string itemNameEng;
+    public string inforRus;
+    public string inforEng;
     public enum ItemType { LongShoot, Archers, Fortress }
     public ItemType itemType;
     public int maxUpgrade = 5;
@@ -43,11 +45,40 @@ public class ShopItemUpgrade : MonoBehaviour
                     break;
             }
         }
-        nameTxt.text = itemName;
-        inforTxt.text = infor;
+        if (PlayerPrefs.GetString("Language") == "rus")
+        {
+            nameTxt.text = itemNameRus;
+            inforTxt.text = inforRus;
+            nameTxt.fontStyle = FontStyle.Bold;
+            inforTxt.fontStyle = FontStyle.Bold;
+        }
+        else
+        {
+            nameTxt.text = itemNameEng;
+            inforTxt.text = inforEng;
+            nameTxt.fontStyle = FontStyle.Normal;
+            inforTxt.fontStyle = FontStyle.Normal;
+        }
         coinTxt.text = coinPrice + "";
 
         UpdateStatus();
+    }
+    private void Update()
+    {
+        if (PlayerPrefs.GetString("Language") == "rus")
+        {
+            nameTxt.text = itemNameRus;
+            inforTxt.text = inforRus;
+            nameTxt.fontStyle = FontStyle.Bold;
+            inforTxt.fontStyle = FontStyle.Bold;
+        }
+        else
+        {
+            nameTxt.text = itemNameEng;
+            inforTxt.text = inforEng;
+            nameTxt.fontStyle = FontStyle.Normal;
+            inforTxt.fontStyle = FontStyle.Normal;
+        }
     }
 
     void UpdateStatus()
@@ -123,7 +154,7 @@ public class ShopItemUpgrade : MonoBehaviour
                 default:
                     break;
             }
-            
+
             UpdateStatus();
         }
         else
