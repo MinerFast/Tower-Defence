@@ -194,7 +194,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: 3985221016008397036, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -370,7 +370,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: 3985221016008397036, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -522,7 +522,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: -538331831730588137, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -671,7 +671,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: 5043307788359985916, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -754,7 +754,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: 5043307788359985916, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -837,7 +837,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: -538331831730588137, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1706,7 +1706,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: -538331831730588137, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1789,7 +1789,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: -4272949958406870782, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1950,7 +1950,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -262
   m_Sprite: {fileID: -4272949958406870782, guid: 840f14dd95ff586459bc060c608304d7,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1963,6 +1963,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2114973079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114973080}
+  m_Layer: 0
+  m_Name: Particle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2114973080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114973079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.014453, y: -1.4075629, z: -8.131529}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2119341827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2742,6 +2772,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2789320161115064299, guid: 14c62279b37e6c24d81d4bce87c6ded6,
+        type: 3}
+      propertyPath: EnemyWaves.Array.data[1].enemySpawns.Array.data[0].enemy
+      value: 
+      objectReference: {fileID: 6766448378530673492, guid: b9166541803a17d43b6bed03d3d60701,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14c62279b37e6c24d81d4bce87c6ded6, type: 3}
 --- !u!33 &3064920086041624852

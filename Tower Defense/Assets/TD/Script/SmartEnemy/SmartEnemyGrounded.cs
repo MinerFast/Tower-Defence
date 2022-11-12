@@ -7,7 +7,7 @@ using Spine.Unity.Modules;
 [RequireComponent(typeof(Controller2D))]
 public class SmartEnemyGrounded : Enemy, ICanTakeDamage
 {
-
+    [SerializeField] private bool isHog;
     public bool isSocking { get; set; }
     public bool isDead { get; set; }
 
@@ -189,7 +189,10 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage
 
         if (spawnItem && spawnItem.spawnWhenDie)
             spawnItem.Spawn();
-
+        if (isHog)
+        {
+            this.gameObject.GetComponent<Boom>().Explosion();
+        }
         AnimSetBool("isDead", true);
         if (Random.Range(0, 2) == 1)
             AnimSetTrigger("die2");

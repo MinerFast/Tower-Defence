@@ -187,7 +187,7 @@ MonoBehaviour:
   verticalRayCount: 4
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
-  boxcollider: {fileID: 0}
+  boxcollider2D: {fileID: 0}
   disableBoxColliderOnStart: 0
   playerInput: {x: 0, y: 0}
   HandlePhysic: 1
