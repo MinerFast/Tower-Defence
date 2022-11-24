@@ -9,28 +9,39 @@ public class GiveDamageToTarget : MonoBehaviour
 
     public bool multipleDetect = false;
 
+    [HideInInspector] public bool isAttack = false;
+
     bool isHit = false;
 
     #region MonoBehaviour
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (isHit && !multipleDetect)
+        if (isAttack)
         {
-            return;
-        }
 
-        if (targetLayer != (targetLayer | (1 << collision.gameObject.layer)) || Damage == 0)
-        {
-            return;
-        }
+            //if (isHit && !multipleDetect)
+            //{
+            //    print("FIRST");
+            //    return;
+            //}
 
-        var takeDamageCount = (ICanTakeDamage)collision.gameObject.GetComponent(typeof(ICanTakeDamage));
-        if (takeDamageCount != null)
-        {
-            takeDamageCount.TakeDamage(Damage, Vector2.zero, transform.position, gameObject);
-            isHit = true;
+            //if (targetLayer != (targetLayer | (1 << collision.gameObject.layer)) || Damage == 0)
+            //{
+            //    return;
+            //}
+
+            ICanTakeDamage takeDamageCount = (ICanTakeDamage)collision.gameObject.GetComponent(typeof(ICanTakeDamage));
+            print("Sheeesh");
+            if (takeDamageCount != null)
+            {
+                takeDamageCount.TakeDamage(Damage, Vector2.zero, transform.position, gameObject);
+                isHit = true;
+            }
+            isAttack = false;
+
         }
     }
+
     private void OnEnable()
     {
         isHit = false;

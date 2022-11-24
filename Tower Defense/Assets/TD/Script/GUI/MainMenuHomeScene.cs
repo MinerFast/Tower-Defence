@@ -191,5 +191,6 @@ public class MainMenuHomeScene : MonoBehaviour
     {
         if (GameMode.Instance)
             GameMode.Instance.ResetDATA();
+        PlayerPrefs.DeleteAll();
     }
 }

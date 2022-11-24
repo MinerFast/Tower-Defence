@@ -16,7 +16,6 @@ public class ChangeText : MonoBehaviour
     private const string eng = "eng";
     private void Awake()
     {
-        print(PlayerPrefs.GetString("Language"));
         text = GetComponent<Text>();
         if (PlayerPrefs.GetString("Language") == rus)
         {

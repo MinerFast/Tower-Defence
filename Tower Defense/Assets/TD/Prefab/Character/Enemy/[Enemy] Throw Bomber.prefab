@@ -343,7 +343,7 @@ MonoBehaviour:
   verticalRayCount: 4
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
-  boxcollider: {fileID: 0}
+  boxcollider2D: {fileID: 0}
   disableBoxColliderOnStart: 0
   playerInput: {x: 0, y: 0}
   HandlePhysic: 1
@@ -435,8 +435,10 @@ MonoBehaviour:
   checkTarget: {fileID: 0}
   isPlayerDetected: 0
   delayChasePlayerWhenDetect: 0
+  isHog: 0
   velocity: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
+  giveDamageToTarget: {fileID: 0}
 --- !u!114 &925561342554985449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,13 +471,13 @@ MonoBehaviour:
   addTorque: 100
   throwRate: 2
   throwPosition: {fileID: 1605244271544609540}
+  checkPoint: {fileID: 3784733293951656117}
   _Grenade: {fileID: 6298002723083727019, guid: cd4234632ef382840b879be95b95b645,
     type: 3}
   soundAttack: {fileID: 8300000, guid: 43a87b865afa2134cba7a46524cbfcd6, type: 3}
   targetPlayer:
     serializedVersion: 2
     m_Bits: 256
-  checkPoint: {fileID: 3784733293951656117}
   radiusDetectPlayer: 10
 --- !u!50 &7904260213264259600
 Rigidbody2D:

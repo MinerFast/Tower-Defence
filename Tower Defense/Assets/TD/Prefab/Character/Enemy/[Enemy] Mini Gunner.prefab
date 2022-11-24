@@ -521,6 +521,7 @@ MonoBehaviour:
   isHog: 0
   velocity: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
+  giveDamageToTarget: {fileID: 0}
 --- !u!114 &3371687861711520891
 MonoBehaviour:
   m_ObjectHideFlags: 0

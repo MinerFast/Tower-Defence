@@ -452,12 +452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb0136fcaa13a942b6d5a4e38f60fed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menu: {fileID: 0}
-  restart: {fileID: 0}
-  next: {fileID: 0}
-  starOne: {fileID: 0}
-  starTwo: {fileID: 0}
-  starThree: {fileID: 0}
+  menu: {fileID: 2004244907}
+  restart: {fileID: 1107010700}
+  next: {fileID: 7264455027612451675}
+  starOne: {fileID: 3277416342734097750}
+  starTwo: {fileID: 6287590644078545450}
+  starThree: {fileID: 2683945735026915609}
 --- !u!1 &70181581450943952
 GameObject:
   m_ObjectHideFlags: 0

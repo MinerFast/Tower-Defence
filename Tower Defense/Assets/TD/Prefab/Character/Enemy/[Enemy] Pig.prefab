@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661960242}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.0042760144, w: 0.9999909}
   m_LocalPosition: {x: -0.547, y: 0.419, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6766448378530673501}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.49}
 --- !u!61 &4190010968293198847
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -71,11 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d2aac5868caf94884f7e3d5be50729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 20
+  Damage: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
   multipleDetect: 0
+  isAttack: 0
 --- !u!50 &6017483024656205430
 Rigidbody2D:
   serializedVersion: 4
@@ -178,7 +179,7 @@ Transform:
   m_Children:
   - {fileID: 6766448377667292546}
   m_Father: {fileID: 6766448378530673501}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6766448377758653401
 GameObject:
@@ -582,8 +583,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6766448379300656394}
-  - {fileID: 6766448377689860610}
   - {fileID: 661960243}
+  - {fileID: 6766448377689860610}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -822,8 +823,10 @@ MonoBehaviour:
   checkTarget: {fileID: 0}
   isPlayerDetected: 0
   delayChasePlayerWhenDetect: 0
+  isHog: 0
   velocity: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
+  giveDamageToTarget: {fileID: 6766448379002294372}
 --- !u!114 &6766448378530673442
 MonoBehaviour:
   m_ObjectHideFlags: 0

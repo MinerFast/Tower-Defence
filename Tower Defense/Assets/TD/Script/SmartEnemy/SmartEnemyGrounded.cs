@@ -18,6 +18,7 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage
     public Controller2D controller;
 
     float velocityXSmoothing = 0;
+    public GiveDamageToTarget giveDamageToTarget;
 
 
     [Header("New")]
@@ -298,12 +299,14 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage
                 {
                     if (meleeAttack.CheckPlayer(isFacingRight()))
                     {
+                        giveDamageToTarget.isAttack = true;
                         SetEnemyState(ENEMYSTATE.ATTACK);
                         meleeAttack.Action();
                         AnimSetTrigger("melee");
                     }
                     else if (!meleeAttack.isAttacking && enemyState == ENEMYSTATE.ATTACK)
                     {
+                        giveDamageToTarget.isAttack = false;
                         SetEnemyState(ENEMYSTATE.WALK);
                     }
                 }
@@ -353,12 +356,19 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage
     /// </summary>
     public void AnimMeleeAttackStart()
     {
+        giveDamageToTarget.isAttack = true;
         meleeAttack.CheckForHit();
     }
 
     public void AnimMeleeAttackEnd()
     {
         meleeAttack.CheckForHit();
+        StartCoroutine(AnimEnd());
+    }
+    IEnumerator AnimEnd()
+    {
+        yield return new WaitForSeconds(0.1f);
+        giveDamageToTarget.isAttack = false;
     }
 
     public void AnimThrow()

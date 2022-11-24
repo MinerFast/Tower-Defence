@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922197191999209401}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.000000029802322, w: 1}
   m_LocalPosition: {x: -0.786, y: 0.419, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -43,10 +43,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.5329877, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.0659752, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &5848783413401491951
 MonoBehaviour:
@@ -71,11 +71,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d2aac5868caf94884f7e3d5be50729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 200
+  Damage: 100
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
   multipleDetect: 0
+  isAttack: 0
 --- !u!50 &1163450130
 Rigidbody2D:
   serializedVersion: 4
@@ -700,7 +701,7 @@ MonoBehaviour:
   verticalRayCount: 4
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
-  boxcollider: {fileID: 0}
+  boxcollider2D: {fileID: 0}
   disableBoxColliderOnStart: 0
   playerInput: {x: 0, y: 0}
   HandlePhysic: 1
@@ -792,8 +793,10 @@ MonoBehaviour:
   checkTarget: {fileID: 0}
   isPlayerDetected: 0
   delayChasePlayerWhenDetect: 0
+  isHog: 0
   velocity: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
+  giveDamageToTarget: {fileID: 5848783413401491951}
 --- !u!114 &5848783413869001385
 MonoBehaviour:
   m_ObjectHideFlags: 0

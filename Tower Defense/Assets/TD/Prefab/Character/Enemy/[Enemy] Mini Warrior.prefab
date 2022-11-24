@@ -269,7 +269,7 @@ MonoBehaviour:
   verticalRayCount: 4
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
-  boxcollider: {fileID: 0}
+  boxcollider2D: {fileID: 0}
   disableBoxColliderOnStart: 0
   playerInput: {x: 0, y: 0}
   HandlePhysic: 1
@@ -361,8 +361,10 @@ MonoBehaviour:
   checkTarget: {fileID: 0}
   isPlayerDetected: 0
   delayChasePlayerWhenDetect: 0
+  isHog: 0
   velocity: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
+  giveDamageToTarget: {fileID: 6883167538181640360}
 --- !u!114 &760439294879069736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,7 +450,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4573108808307142193}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.547, y: 0.272, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -498,6 +500,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   multipleDetect: 0
+  isAttack: 0
 --- !u!50 &8420527239250884177
 Rigidbody2D:
   serializedVersion: 4

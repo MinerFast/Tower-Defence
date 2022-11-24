@@ -316,7 +316,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7646713023294435305}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.000000029802322, w: 1}
   m_LocalPosition: {x: -0.547, y: 0.272, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -333,10 +333,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.17059356, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -347,7 +347,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.8411871, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &2063869861012434108
 MonoBehaviour:
@@ -361,11 +361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d2aac5868caf94884f7e3d5be50729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 35
+  Damage: 15
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
   multipleDetect: 0
+  isAttack: 0
 --- !u!50 &4403577625342540801
 Rigidbody2D:
   serializedVersion: 4
@@ -793,8 +794,10 @@ MonoBehaviour:
   checkTarget: {fileID: 0}
   isPlayerDetected: 0
   delayChasePlayerWhenDetect: 0
+  isHog: 0
   velocity: {x: 0, y: 0, z: 0}
   controller: {fileID: 0}
+  giveDamageToTarget: {fileID: 2063869861012434108}
 --- !u!114 &168968656300767376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,7 +815,7 @@ MonoBehaviour:
     m_Bits: 256
   checkPoint: {fileID: 92507194754149666}
   meleeDamageObj: {fileID: 7646713023294435305}
-  detectDistance: 0.5
+  detectDistance: 0.3
   meleeRate: 2
   MeleeObj: {fileID: 0}
   soundAttacksVol: 0.5
